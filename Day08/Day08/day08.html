@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>day08</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>云笔记</h1>
+<h2>AOP 面向切面编程</h2>
+<p>面向切面(儿)编程: 面向业务的横向编程, 可以在不改变原有业务功能情况下为软件扩展横向功能.</p>
+<blockquote>
+<p>　切面(儿)　事物的横截面</p>
+</blockquote>
+<p>如果没有AOP, 在实现软件业务层性能测试是这样的:</p>
+<p><img src="1.png" /></p>
+<blockquote>
+<p>会出现大量的冗余的重复编码</p>
+</blockquote>
+<p>采用AOP就可以剥离 性能测试逻辑, 在不改变原有业务的情况下动态嵌入测试代码:</p>
+<p><img src="2.png" /></p>
+<h3>Spring AOP</h3>
+<p>Spring AOP 是利用 AspectJ API 实现的所以使用 SpringAOP 之前必须导入 AspectJ API 包:</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;aspectj&lt;/groupId&gt;
+    &lt;artifactId&gt;aspectjweaver&lt;/artifactId&gt;
+    &lt;version&gt;1.5.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>编写第一个AOP程序:</p>
+<ol>
+<li>
+<p>添加Spring AOP配置信息, 开启Spring AOP功能: 添加spring-aop.xml文件:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot; 
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xmlns:context=&quot;http://www.springframework.org/schema/context&quot; 
+    xmlns:jdbc=&quot;http://www.springframework.org/schema/jdbc&quot;  
+    xmlns:jee=&quot;http://www.springframework.org/schema/jee&quot; 
+    xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+    xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot; 
+    xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
+    xmlns:util=&quot;http://www.springframework.org/schema/util&quot;
+    xmlns:jpa=&quot;http://www.springframework.org/schema/data/jpa&quot;
+    xsi:schemaLocation=&quot;
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd&quot;&gt;
+
+    &lt;!-- 支持　@Aspect 注解　 --&gt;
+    &lt;aop:aspectj-autoproxy/&gt;
+
+&lt;/beans&gt;
+</code></pre>
+
+</li>
+<li>
+<p>编写切面组件:</p>
+<pre><code>@Aspect //&lt;aop:aspectj-autoproxy/&gt;
+@Component //&lt;context:component-scan base-package=&quot;cn.tedu&quot; /&gt;
+public class DemoAspect {
+
+    /**
+     * 在 userService 组件的全部方法之前执行切面方法test
+     */
+    @Before(&quot;bean(userService)&quot;)
+    public void test(){
+        System.out.println(&quot;Hello World&quot;);
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>注意:@Aspect 必须与 <code>&lt;aop:aspectj-autoproxy/&gt;</code> 配合
+ @Component 必须与 <code>&lt;context:component-scan base-package=&quot;cn.tedu&quot; /&gt;</code> 配合</p>
+</blockquote>
+</li>
+<li>
+<p>启动应用测试: 登录功能是否被动态扩展了功能,输出了 Hello World</p>
+</li>
+</ol>
+<h3>通知</h3>
+<p>用于定义AOP组件的执行位置:</p>
+<ol>
+<li>@Before</li>
+<li>@AfterReturning</li>
+<li>@AfterThrowing</li>
+<li>@After</li>
+<li>@Around</li>
+</ol>
+<p>通知执行原理:</p>
+<p><img src="3.png" /></p>
+<p>通知测试案例:</p>
+<pre><code>@Aspect
+@Component
+public class AdviceDemoAspect {
+
+    @Before(&quot;bean(userService)&quot;)
+    public void t1(){
+        System.out.println(&quot;Before&quot;);
+    }
+    @AfterReturning(&quot;bean(userService)&quot;)
+    public void t2(){
+        System.out.println(&quot;AfterReturning&quot;);
+    }
+    @AfterThrowing(&quot;bean(userService)&quot;)
+    public void t3(){
+        System.out.println(&quot;AfterThrowing&quot;);
+    }
+    @After(&quot;bean(userService)&quot;)
+    public void t4(){
+        System.out.println(&quot;After&quot;);
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>测试观察 每个通知的执行位置</p>
+</blockquote>
+<h3>环绕通知 @Around</h3>
+<p>环绕通知可以在业务方法的前后扩展功能</p>
+<p>是一个万能通知, 可以替代其他几个通知.</p>
+<p>其工作原理如下:</p>
+<p><img src="4.png" /></p>
+<p>环绕通知案例:</p>
+<pre><code>@Aspect
+@Component
+public class AroundAspect {
+
+    //环绕通知
+    //使用环绕通知的方法必须包含如下:
+    //1. 必须包含方法参数 ProceedingJoinPoint
+    //2. 必须有返回值 Object
+    //3. 必须抛出异常 Throwable
+    @Around(&quot;bean(userService)&quot;)
+    public Object testAround(ProceedingJoinPoint jp)
+        throws Throwable{
+        System.out.println(&quot;Hello Around&quot;); 
+        //调用了目标业务方法
+        Object val = jp.proceed();
+        //返回业务方法的返回值
+        return val;
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>提示: jp.proceed(); 用于调用目标的业务方法, 如果不调用就意味着跳过目标业务方法的执行, 这就意味着环绕通知可以影响软件功能的执行!</p>
+</blockquote>
+<p>环绕通知可以替代 其他的通知:</p>
+<pre><code>@Around(&quot;bean(userService)&quot;)
+public Object testAround(ProceedingJoinPoint jp)
+    throws Throwable{
+    try{
+        //@Before
+        //在业务方法之前增加了逻辑功能
+        System.out.println(&quot;Hello Around&quot;); 
+        //调用了目标业务方法
+        Object val = jp.proceed();
+        //返回业务方法的返回值
+        //@AfterReturning
+        return val;
+    }catch(Throwable e){
+        throw e;
+        //@AfterThrowing
+    }finally{
+        //@After
+    }
+}
+</code></pre>
+
+<h3>切入点 表达式</h3>
+<p>用于声明AOP组件对那些类,那些Bean对象的方法进行拦截.</p>
+<p>有3种切入点:</p>
+<ol>
+<li>
+Bean组件切入点(对象)
+<ul>
+<li>语法 bean(bean组件ID)</li>
+<li>bean(userService)</li>
+<li>bean(userService) || bean(noteService)</li>
+<li>bean(*Service) </li>
+</ul>
+</li>
+<li>
+类切入点
+<ul>
+<li>within(具体类名)</li>
+<li>within(cn.tedu.cloudnote.service.UserServiceImpl)</li>
+<li>within(cn.tedu.cloudnote.service.*ServiceImpl)</li>
+<li>within(cn.tedu.cloudnote.<em>.</em>ServiceImpl)</li>
+</ul>
+</li>
+<li>
+方法切入点
+<ul>
+<li>execution(方法签名) </li>
+<li>execution(* cn.tedu.cloudnote.service.UserService.login(<em>,</em>))</li>
+<li>execution(* cn.tedu.cloudnote.service.<em>Service.find</em>(**))</li>
+<li>execution(* cn.tedu.cloudnote.<em>.</em>Service.find<em>(</em>*))</li>
+<li>execution(* cn.tedu.cloudnote.<em>.</em>Service.<em>(</em>*))</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>建议: 使用一致命名规则, 便于书写切入点表达式, 达到同样的目的切入点表达式可以有多重写法. </p>
+</blockquote>
+<h3>　AOP 的底层工作原理</h3>
+<blockquote>
+<p>　面试期间，面试官很喜欢问的问题！</p>
+</blockquote>
+<p>AOP 底层使用了: 动态代理技术</p>
+<ol>
+<li>
+JDK 动态代理, 是JDK提供的API, 是反射包中的一部分
+<ul>
+<li>java.lang.reflect.Proxy 目标对象必须有接口!</li>
+<li>Spring AOP 在被代理类有接口情况下 自动使用 JDK 动态代理</li>
+</ul>
+</li>
+<li>
+CGLIB 动态代理, 第三方提供
+<ul>
+<li>需要导入 CGLIB 包</li>
+<li>被代理的可以是类, 无需接口</li>
+<li>Spring AOP 在被代理的类没有接口情况下, 自动使用CGLIB</li>
+<li>一般不建议使用! </li>
+</ul>
+</li>
+</ol>
+<p>在业务层方法中插入异常代码, 可以用于分析AOP执行原理:</p>
+<p><img src="5.png" /></p>
+<p>在login方法中插入:</p>
+<pre><code>String s = &quot;&quot;;
+s.charAt(0);
+</code></pre>
+
+<p>利用异常可以分析 AOP 的底层工作情况:</p>
+<pre><code>java.lang.StringIndexOutOfBoundsException: String index out of range: 0
+    at java.lang.String.charAt(String.java:658)
+    at cn.tedu.cloudnote.service.UserServiceImpl.login(UserServiceImpl.java:35)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke(Method.java:497)
+    at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:317)
+    at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:183)
+    at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:150)
+    at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:80)
+    at cn.tedu.cloudnote.aop.TimeTestAspect.test(TimeTestAspect.java:22)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke(Method.java:497)
+    at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:621)
+    at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:610)
+    at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:65)
+    at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
+    at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:91)
+    at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
+    at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:204)
+    at com.sun.proxy.$Proxy45.login(Unknown Source)
+    at cn.tedu.cloudnote.controller.UserController.login(UserController.java:26)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke(Method.java:497)
+    at org.springframework.web.method.support.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:215)
+    at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:132)
+    at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104)
+    at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandleMethod(RequestMappingHandlerAdapter.java:745)
+    at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:686)
+    at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:80)
+    at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:925)
+    at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:856)
+    at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:953)
+    at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:855)
+    at javax.servlet.http.HttpServlet.service(HttpServlet.java:646)
+    at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:829)
+    at javax.servlet.http.HttpServlet.service(HttpServlet.java:727)
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:303)
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:208)
+    at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:241)
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:208)
+    at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:220)
+    at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:122)
+    at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:501)
+    at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:171)
+    at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+    at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:950)
+    at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:116)
+    at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:408)
+    at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1040)
+    at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:607)
+    at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:314)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+    at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+    at java.lang.Thread.run(Thread.java:745)
+</code></pre>
+
+<h3>3种功能拦截编程的区别:</h3>
+<ol>
+<li>
+Servlet Filter
+<ul>
+<li>可以拦截所有的 HTTP 请求: *.html *.js *.png *.do *.jsp *.mp3</li>
+<li>在HTTP协议层面进行拦截式编程时候使用!</li>
+<li>如: 限制<em>.mp3的下载, 限制</em>.png的查看等</li>
+</ul>
+</li>
+<li>
+Spring MVC 拦截器
+<ul>
+<li>工作在Spring MVC 的容器中, 可以拦截SpringMVC的工作流程</li>
+<li>在Spring MVC中对工作流程进行拦截式编程, 可以使用Spring MVC 拦截器. 处理*.do可以使用 Spring MVC 拦截器.</li>
+</ul>
+</li>
+<li>
+Spring AOP 
+<ul>
+<li>工作在 Spring容器中的各个组件之间, 可以拦截Bean组件之间的调用</li>
+<li>用于在Spring组件之间的拦截式编程.</li>
+</ul>
+</li>
+</ol>
+<p>Servlet Filter案例, 拦截*.html *.js的请求:</p>
+<p><img src="6.png" /></p>
+<ol>
+<li>
+<p>添加过滤器类:</p>
+<pre><code>public class HtmlFilter implements Filter {
+    public void init(FilterConfig cfg) 
+            throws ServletException {
+    }
+    public void destroy() {
+    }
+    public void doFilter(ServletRequest req, 
+            ServletResponse res, FilterChain chain)
+            throws IOException, ServletException {
+        HttpServletRequest request =
+                (HttpServletRequest) req;
+        //获取请求的文件名:
+        String path=request.getRequestURI();
+        System.out.println(path); 
+        chain.doFilter(req, res);
+    }
+}   
+</code></pre>
+
+</li>
+<li>
+<p>配置Filter, web.xml:</p>
+<pre><code>  &lt;filter&gt;
+     &lt;filter-name&gt;html&lt;/filter-name&gt;
+     &lt;filter-class&gt;cn.tedu.cloudnote.web.HtmlFilter&lt;/filter-class&gt;
+  &lt;/filter&gt;
+  &lt;filter-mapping&gt;
+     &lt;filter-name&gt;html&lt;/filter-name&gt;
+     &lt;url-pattern&gt;*.html&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt;  
+  &lt;filter-mapping&gt;
+     &lt;filter-name&gt;html&lt;/filter-name&gt;
+     &lt;url-pattern&gt;*.js&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt; 
+</code></pre>
+
+</li>
+<li>
+<p>测试...</p>
+</li>
+</ol>
+<hr />
+<h2>作业</h2>
+<ol>
+<li>为软件增加性能测试功能</li>
+</ol>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

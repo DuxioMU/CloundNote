@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>day09</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>云笔记</h1>
+<h2>Spring 声明式事务处理</h2>
+<p>回顾: 编程式事务处理</p>
+<pre><code>Connection conn = null;
+try{
+    conn = getConnection();
+    conn.setAutoCommit(false);//设置事务边界
+    //复杂业务操作
+    // 增加
+    // 删除
+    // 修改
+    conn.commit();//提交
+}catch(Exception e){
+    conn.rollback();//回退
+}finally{
+    conn.close(); //释放资源
+}
+</code></pre>
+
+<blockquote>
+<p>缺点: 繁琐的编程事务处理, 产生大量的冗余重复的代码.</p>
+</blockquote>
+<p>声明式事务处理: 利用AOP机制便捷的管理事务</p>
+<p><img src="1.png" /></p>
+<h3>使用Spring 声明式事务处理</h3>
+<ol>
+<li>
+<p>配置事务管理器, MyBatis使用数据源事务管理器. spring-mybatis.xml</p>
+<pre><code>&lt;!-- spring-mybatis.xml --&gt;
+&lt;!-- 配置事务管理器, 使声明式事务管理生效 --&gt;
+&lt;tx:annotation-driven 
+    transaction-manager=&quot;txManager&quot;/&gt; 
+&lt;!-- txManager 是一个 Bean 组件 --&gt;
+&lt;!-- MyBatis 使用Spring提供的DataSourceTransactionManager
+    DataSourceTransactionManager 必须设置属性dataSource  --&gt;
+&lt;bean id=&quot;txManager&quot;  class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
+    &lt;property name=&quot;dataSource&quot; ref=&quot;dbcp&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+</code></pre>
+
+</li>
+<li>
+<p>在需要事务保护的业务方法上使用 事务注解</p>
+<pre><code>@Transactional //必须配置事务管理器才能生效
+public boolean moveNote(String noteId, String notebookId) throws NoteNotFoundException, NotebookNotFoundException {
+    if(notebookId==null||notebookId.trim().isEmpty()){
+        throw new NotebookNotFoundException(&quot;ID空&quot;);
+    }
+    Notebook notebook=notebookDao.findNotebookById(notebookId);
+    if(notebook==null){
+        throw new NotebookNotFoundException(&quot;没有笔记本&quot;);
+    }
+    if(noteId==null || noteId.trim().isEmpty()){
+        throw new NoteNotFoundException(&quot;ID不能空&quot;);
+    }
+    Note note = noteDao.findNoteById(noteId);
+    if(note==null){
+        throw new NoteNotFoundException(&quot;没有对应的笔记&quot;);
+    }
+    Note data = new Note();
+    data.setId(noteId);
+    data.setNotebookId(notebookId);
+    data.setLastModifyTime(System.currentTimeMillis());
+    System.out.println(data); 
+    int n = noteDao.updateNote(data);
+
+    //String s = &quot;&quot;;
+    //s.charAt(0);
+
+    return n==1;
+}
+</code></pre>
+
+<blockquote>
+<p>String s = &quot;&quot;; s.charAt(0); 用于在方法中产生运行时异常, 触发事务回滚操作. 如果事务回滚了则.updateNote(data) 更改效果取消了.</p>
+</blockquote>
+</li>
+<li>
+<p>测试: 当方法中出现运行时异常, 事务会回退.</p>
+</li>
+</ol>
+<p>批量删除的事务测试:</p>
+<p><img src="2.png" /></p>
+<ol>
+<li>
+<p>添加持久层方法 NoteDao</p>
+<pre><code>int deleteNoteById(String id);
+</code></pre>
+
+</li>
+<li>
+<p>添加SQL 语句 NoteMapper.xml</p>
+<pre><code>&lt;delete id=&quot;deleteNoteById&quot;
+    parameterType=&quot;string&quot;&gt;
+    delete from
+        cn_note
+    where 
+        cn_note_id=#{id}
+&lt;/delete&gt;
+</code></pre>
+
+</li>
+<li>
+<p>添加业务层方法 NoteService</p>
+<pre><code>boolean deleteNotes(String... ids);
+// String[]  ==  String... 变长参数
+// 调用时候:
+// String[] 参数 必须传递数组参数:
+//   deleteNotes(new String[]{&quot;id1&quot;,&quot;id2&quot;,&quot;id3&quot;})
+// String... 参数可以直接传递元素:
+//   deleteNotes(&quot;id1&quot;,&quot;id2&quot;,&quot;id3&quot;,&quot;id4&quot;)
+// 或deleteNotes(new String[]{&quot;id1&quot;,&quot;id2&quot;,&quot;id3&quot;})
+//   编译器会将&quot;id1&quot;,&quot;id2&quot;,&quot;id3&quot; 替换为数组
+// 注意: String... 只能使用在最后一个参数位置
+</code></pre>
+
+</li>
+<li>
+<p>实现业务方法 NoteServiceImpl</p>
+<pre><code>@Transactional
+public boolean deleteNotes(String... ids) {
+    for(String id : ids){
+        int n = noteDao.deleteNoteById(id);
+        if(n!=1){
+            throw new NoteNotFoundException( &quot;ID错误!&quot;);
+        }
+    }
+    return true;
+}
+</code></pre>
+
+</li>
+</ol>
+<p>5.测试 TestNoteService</p>
+<pre><code>    @Test
+    public void testDeleteNotes(){
+        String id1 = &quot;3febebb3-a1b7-45ac-83ba-50cdb41e5fc1&quot;;
+        String id2 = &quot;9187ffd3-4c1e-4768-9f2f-c600e835b823&quot;;
+        String id3 = &quot;ebd65da6-3f90-45f9-b045-782928a5e2c0&quot;;
+        String id4 = &quot;fed920a0-573c-46c8-ae4e-368397846efd&quot;;
+        boolean b = service.deleteNotes(
+                id1, id2, id3, id4);
+        System.out.println(b);
+    }   
+
+&gt; 说明: 当提交的id有错误时候, 会回滚事务, 取消删除操作, 只有ID全部是正确的情况下才会提交事务.
+</code></pre>
+
+<h3>事务的只读属性</h3>
+<pre><code>@Transactional(readOnly=true)
+</code></pre>
+
+<p>用于声明只读(readOnly)属性: 如果业务方法没有对数据进行更改, 可以使用只读属性, 可以提高方法执行性能. 建议如果只是读取数据, 可以设置这个属性为true</p>
+<h3>　事务的隔离级别</h3>
+<ol>
+<li>
+@Transactional(isolation=Isolation.SERIALIZABLE) 
+<ul>
+<li>序列化:　完全隔离，最安全，同一个数据一个用户操作期间，其他用户必须等待，性能最差！</li>
+</ul>
+</li>
+<li>
+@Transactional(isolation=Isolation.REPEATABLE_READ)
+<ul>
+<li>可以重复读: 可以返回读取到一致数据, 性能比序列化好</li>
+</ul>
+</li>
+<li>
+@Transactional(isolation=Isolation.READ_COMMITTED)
+<ul>
+<li>@Transactional(isolation=Isolation.DEFAULT)</li>
+<li>读取提交以后的数据: 最常用的隔离级别, 是默认值!</li>
+</ul>
+</li>
+<li>
+@Transactional(isolation=Isolation.READ_UNCOMMITTED)
+<ul>
+<li>读取未提交数据: 不隔离, 不推荐使用!</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>重点: 一般都是使用默认的隔离级别READ_COMMITTED! 性能和隔离性折中方案!!!</p>
+</blockquote>
+<h3>事务的传播</h3>
+<p>为什么要事务的传播: 业务方法调用业务方法时候往往需要将这些方法整合为一个事务.</p>
+<p><img src="3.png" /></p>
+<p>事务传播属性:</p>
+<ol>
+<li>
+@Transactional(propagation=Propagation.REQUIRED)
+<ul>
+<li>需要事务: 如果当前方法调用时候已经开启事务, 则自动参与当前事务, 如果当前没有事务, 则自动开启新事务.</li>
+<li>默认值: 最常用规则.</li>
+</ul>
+</li>
+<li>
+@Transactional(propagation=Propagation.NEVER)
+<ul>
+<li>绝不: 绝不参与事务, 如果在事务方法中调用就抛出异常!</li>
+</ul>
+</li>
+<li>
+@Transactional(propagation=Propagation.MANDATORY)
+<ul>
+<li>必须的: 必须在事务过程调用, 没有就抛出异常</li>
+</ul>
+</li>
+<li>
+@Transactional(propagation=Propagation.NESTED)
+<ul>
+<li>嵌套：必须在事务方法中调用, 不能单独调用</li>
+</ul>
+</li>
+<li>
+@Transactional(propagation=Propagation.SUPPORTS)
+<ul>
+<li>支持事务:　使用被事务方法调用, 但是单独调用时候不开启事务</li>
+</ul>
+</li>
+<li>
+@Transactional(propagation=Propagation.REQUIRES_NEW)
+<ul>
+<li>必须是新事务:　永远开启新事务</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>REQUIRED: 是最常用的默认值! </p>
+<p>注意: 在面试之前一定要了解事务的传播和隔离级别默认值!</p>
+</blockquote>
+<p>事务传播案例:</p>
+<ol>
+<li>
+<p>添加子业务方法 NoteService </p>
+<pre><code>@Transactional
+public void addScore(){
+    String s = null;
+    s.length();
+}
+</code></pre>
+
+</li>
+<li>
+<p>在业务方法中调用子业务方法</p>
+<pre><code>@Transactional
+public Note addNote(String userId, 
+        String notebookId, String title)
+        throws UserNotFoundException, 
+        NotebookNotFoundException {
+
+    if(userId==null||userId.trim().isEmpty()){
+        throw new UserNotFoundException(&quot;ID空&quot;);
+    }
+    User user=userDao.findUserById(userId);
+    if(user==null){
+        throw new UserNotFoundException(&quot;木有人&quot;);
+    }
+    if(notebookId==null||notebookId.trim().isEmpty()){
+        throw new NotebookNotFoundException(&quot;ID空&quot;);
+    }
+    Notebook notebook=notebookDao.findNotebookById(notebookId);
+    if(notebook==null){
+        throw new NotebookNotFoundException(&quot;没有笔记本&quot;);
+    }
+    if(title==null || title.trim().isEmpty()){
+        title=&quot;葵花宝典&quot;;
+    }
+    String id = UUID.randomUUID().toString();
+    String statusId = &quot;0&quot;;
+    String typeId = &quot;0&quot;;
+    String body = &quot;&quot;;
+    long time=System.currentTimeMillis();
+    Note note = new Note(id, notebookId,
+        userId, statusId, typeId, title, 
+        body, time, time);
+    int n = noteDao.addNote(note);
+    if(n!=1){
+        throw new NoteNotFoundException(&quot;保存失败&quot;);
+    }
+    //调用子业务方法
+    addScore();
+    return note;
+}
+</code></pre>
+
+</li>
+<li>
+<p>测试: 当子业务方法出现异常时候, 子业务方法和主业务方法的事务都进行回滚操作.</p>
+</li>
+</ol>
+<h2>MyBatis 动态SQL拼接</h2>
+<p>MyBatis 提供了丰富的动态SQL生成功能:</p>
+<pre><code>&lt;if&gt;
+&lt;foreach&gt;
+&lt;choose&gt;
+&lt;where&gt;
+&lt;set&gt;
+&lt;trim&gt;
+</code></pre>
+
+<h3>for的使用</h3>
+<p>用于处理数组或者List, 经常用于生成 id in (id1, id2, id3) 等条件</p>
+<p>批量删除笔记功能(优化): 批量删除时候讲SQL优化为一个SQL可以提高数据库访问性能.</p>
+<p><img src="4.png" /></p>
+<ol>
+<li>
+<p>添加持久层方法: NoteDao</p>
+<pre><code>int deleteNotesById(String... ids);
+</code></pre>
+
+</li>
+<li>
+<p>添加SQL, NoteMapper.xml:</p>
+<pre><code>&lt;delete id=&quot;deleteNotesById&quot;&gt;
+    delete from
+        cn_note
+    where 
+        cn_note_id in
+    &lt;foreach collection=&quot;array&quot;
+        item=&quot;id&quot;
+        open=&quot;(&quot; separator=&quot;,&quot; close=&quot;)&quot;&gt;
+        #{id}
+    &lt;/foreach&gt;
+    &lt;choose&gt;
+        &lt;when test=&quot;&quot;&gt;&lt;/when&gt;
+    &lt;/choose&gt;
+&lt;/delete&gt;
+</code></pre>
+
+</li>
+<li>
+<p>测试: TestNoteDao</p>
+<pre><code>@Test
+public void testDeleteNotesById(){
+    String id1=&quot;c347f832-e2b2-4cb7-af6f-6710241bcdf6&quot;;
+    String id2=&quot;07305c91-d9fa-420d-af09-c3ff209608ff&quot;;
+    String id3=&quot;5565bda4-ddee-4f87-844e-2ba83aa4925f&quot;;
+    String id4=&quot;1ec185d6-554a-481b-b322-b562485bb8e8&quot;;
+    int n = dao.deleteNotesById(id1, id2, id3, id4);
+    System.out.println(n); 
+}
+</code></pre>
+
+<blockquote>
+<p>注意: 这个测试案例没有事务保护</p>
+</blockquote>
+</li>
+<li>
+<p>优化业务层批量删除方法: NoteServiceImpl</p>
+<pre><code>@Transactional
+public boolean deleteNotes(String... ids) {
+    int n = noteDao.deleteNotesById(ids);
+    if(n == ids.length){
+        return true;
+    }
+    throw new NoteNotFoundException(&quot;ID错误!&quot;);
+}
+</code></pre>
+
+<blockquote>
+<p>这个方法有事务保护</p>
+</blockquote>
+</li>
+</ol>
+<h3>choose 的使用</h3>
+<p>经常用于多参数拼接查询:</p>
+<p><img src="5.png" /></p>
+<p>案例:</p>
+<ol>
+<li>
+<p>添加持久层方法 NoteDao</p>
+<pre><code>/**
+ * 多参数查询 
+ * @param param 可以接受参数 title, body, key 
+ * @return
+ */
+List&lt;Map&lt;String, Object&gt;&gt; findNotesByParam(
+        Map&lt;String, Object&gt; param);
+</code></pre>
+
+<blockquote>
+<p>利用map封装查询参数</p>
+</blockquote>
+</li>
+<li>
+<p>添加SQL NoteMapper.xml</p>
+<pre><code>&lt;select id=&quot;findNotesByParam&quot;
+    parameterType=&quot;map&quot;
+    resultType=&quot;map&quot;&gt;
+    select 
+        cn_note_id as id,
+        cn_note_title as title
+    from 
+        cn_note
+    &lt;where&gt;
+        &lt;trim suffixOverrides=&quot;or&quot;&gt;
+            &lt;choose&gt;
+                &lt;when test=&quot;title!=null&quot;&gt;
+                    cn_note_title like #{title} or
+                &lt;/when&gt;     
+                &lt;when test=&quot;key!=null&quot;&gt;
+                    cn_note_title like #{key} or
+                &lt;/when&gt;
+            &lt;/choose&gt;
+            &lt;choose&gt;
+                &lt;when test=&quot;body!=null&quot;&gt;
+                    cn_note_body like #{body} 
+                &lt;/when&gt;
+                &lt;when test=&quot;key!=null&quot;&gt;
+                    cn_note_body like #{key}
+                &lt;/when&gt;
+            &lt;/choose&gt;
+        &lt;/trim&gt;
+    &lt;/where&gt;
+&lt;/select&gt;
+</code></pre>
+
+<blockquote>
+<p>where 子句可以替换为 <code>&lt;where&gt;</code> 标签, 其结果一样!</p>
+</blockquote>
+</li>
+<li>
+<p>测试: TestNoteDao</p>
+<pre><code>@Test
+public void testFindNotesByParam(){
+    Map&lt;String, Object&gt; param=
+            new HashMap&lt;String, Object&gt;();
+    param.put(&quot;title&quot;, &quot;%ABC%&quot;);
+    param.put(&quot;body&quot;, &quot;%ABC%&quot;);
+    param.put(&quot;key&quot;, &quot;%1%&quot;);
+    List&lt;Map&lt;String, Object&gt;&gt; list=
+        dao.findNotesByParam(param);
+    for (Map&lt;String, Object&gt; map : list) {
+        System.out.println(map); 
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>可以进行组合参数查询测试</p>
+</blockquote>
+</li>
+</ol>
+<h3>@Param 参数注解</h3>
+<p>MyBatis 可以利用@Param 标注多个参数:</p>
+<ol>
+<li>
+<p>接口方法 NoteDao</p>
+<pre><code>List&lt;Map&lt;String, Object&gt;&gt; findNotesByKey(
+        @Param(&quot;title&quot;) String title,  
+        @Param(&quot;body&quot;) String body, 
+        @Param(&quot;key&quot;) String key);  
+</code></pre>
+
+</li>
+<li>
+<p>SQL  NoteMapper.xml</p>
+<pre><code>&lt;select id=&quot;findNotesByKey&quot;
+    resultType=&quot;map&quot;&gt;
+    select 
+        cn_note_id as id,
+        cn_note_title as title
+    from 
+        cn_note
+    &lt;where&gt;
+        &lt;trim suffixOverrides=&quot;or&quot;&gt;
+            &lt;choose&gt;
+                &lt;when test=&quot;title!=null&quot;&gt;
+                    cn_note_title like #{title} or
+                &lt;/when&gt;     
+                &lt;when test=&quot;key!=null&quot;&gt;
+                    cn_note_title like #{key} or
+                &lt;/when&gt;
+            &lt;/choose&gt;
+            &lt;choose&gt;
+                &lt;when test=&quot;body!=null&quot;&gt;
+                    cn_note_body like #{body} 
+                &lt;/when&gt;
+                &lt;when test=&quot;key!=null&quot;&gt;
+                    cn_note_body like #{key}
+                &lt;/when&gt;
+            &lt;/choose&gt;
+        &lt;/trim&gt;
+    &lt;/where&gt;
+&lt;/select&gt;
+</code></pre>
+
+</li>
+<li>
+<p>测试 TestNoteDao</p>
+<pre><code>@Test
+public void testFindNotesByKey(){
+    List&lt;Map&lt;String, Object&gt;&gt; list=
+            dao.findNotesByKey(
+            &quot;%1%&quot;, null, null);
+    for (Map&lt;String, Object&gt; map : list) {
+        System.out.println(map);
+    }
+}
+</code></pre>
+
+</li>
+</ol>
+<hr />
+<h2>作业</h2>
+<ol>
+<li>为云笔记项目增加声明式事务</li>
+<li>实现复杂参数查询功能</li>
+</ol>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

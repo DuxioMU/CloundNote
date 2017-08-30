@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>day11</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>云笔记</h1>
+<h2>JQuery Ajax 上传</h2>
+<p>利用JQuery可以实现Ajax上传, 案例如下:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;JQuery Ajax Upload&lt;/title&gt;
+&lt;script type=&quot;text/javascript&quot; 
+    src=&quot;scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(function(){
+    $('#ajaxUpload').click(uploadFile); 
+});
+function uploadFile(){
+    //1. 用 FormData 收集上载数据
+    var data = new FormData();
+    var file1 = $('#file1')[0].files[0];
+    var file2 = $('#file2')[0].files[0];
+    //验证表单
+    if(file1.size+file2.size&gt;1000000){
+        alert('文件过大');
+        return;
+    }
+    //将文件数据保存到 formData
+    data.append('userfile1', file1);
+    data.append('userfile2', file2);
+
+    //2. 利用 ajax 方法上载文件到 服务器
+    var url = 'demo/upload.do';
+    $.ajax({
+        url: url,
+        data: data,
+        type:'POST',
+        cache: false,
+        processData: false, //JQuery不处理发送数据
+        contentType: false  //JQuery不处理ContentType
+    })
+    .done(function(res){
+        $('#result').html(res);//ok
+    })
+    .fail(function(res){
+        $('#result').html('失败!');
+    });
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;JQuery Ajax Upload&lt;/h1&gt;
+    &lt;input type=&quot;file&quot; id=&quot;file1&quot;&gt; &lt;br&gt;
+    &lt;input type=&quot;file&quot; id=&quot;file2&quot;&gt; &lt;br&gt;
+    &lt;p id=&quot;result&quot;&gt;&lt;/p&gt;
+    &lt;input type=&quot;button&quot; value=&quot;上载文件&quot; id=&quot;ajaxUpload&quot;&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<blockquote>
+<p>服务器端使用上节课的案例</p>
+</blockquote>
+<h2>服务端Debug</h2>
+<p>使用步骤:</p>
+<ol>
+<li>在Java应用代码上打断点</li>
+<li>将Tomcat启动为 Debug 模式</li>
+<li>利用事件触发调试代码的执行, Eclipse会在断点位置暂停.</li>
+<li>切换为Debug工作台, 利用内存变量查看功能变量的值, 估算BUG位置</li>
+<li>利用调试功能按钮逐步执行程序, 检查变量的值.</li>
+</ol>
+<blockquote>
+<p>注意: Debug核心功能就是检查程序运行期间内存中变量的值, 具体BUG要你根据变量的值推断得出.</p>
+<p>技巧: 清除全部断点</p>
+</blockquote>
+<h2>翻页功能实现</h2>
+<p>翻页原理:</p>
+<p><img src="1.png" /></p>
+<h3>1. 持久层</h3>
+<ol>
+<li>
+<p>定义接口方法 NotebookDao</p>
+<pre><code>/**
+ * 分页查询方法
+ * @param userId
+ * @param start 起始位置
+ * @param size 每页查询行数
+ * @return
+ */
+List&lt;Map&lt;String, Object&gt;&gt; findNotebookByPage(
+        @Param(&quot;userId&quot;) String userId,
+        @Param(&quot;start&quot;) int start,
+        @Param(&quot;size&quot;) int size);
+</code></pre>
+
+</li>
+<li>
+<p>定义SQL NotebookMapper.xml</p>
+<pre><code>&lt;select id=&quot;findNotebookByPage&quot;
+    resultType=&quot;map&quot;&gt;
+    select 
+        cn_notebook_id as id, 
+        cn_notebook_name as name
+    from 
+        cn_notebook
+    where 
+        cn_user_id=#{userId}
+    order by 
+        cn_notebook_createtime desc
+    limit #{start}, #{size}
+&lt;/select&gt;
+</code></pre>
+
+</li>
+<li>
+<p>测试</p>
+<pre><code>...
+</code></pre>
+
+</li>
+</ol>
+<h3>2. 业务层</h3>
+<ol>
+<li>
+<p>定义业务层方法 NotebookService</p>
+<pre><code>/**
+ * 分页查询方法
+ * @param userId
+ * @param page 是页号: 0 1 2 3 4 ...
+ * @return
+ * @throws UserNotFoundException
+ */
+List&lt;Map&lt;String, Object&gt;&gt; listNotebooks(
+        String userId, int page) 
+        throws UserNotFoundException;
+</code></pre>
+
+</li>
+<li>
+<p>实现业务方法 NotebookServiceImpl</p>
+<pre><code>@Transactional(readOnly=true)
+public List&lt;Map&lt;String, Object&gt;&gt; 
+    listNotebooks(String userId, int page) 
+    throws UserNotFoundException {
+    if(userId==null || userId.trim().isEmpty()){
+        throw new UserNotFoundException(&quot;ID空&quot;);
+    }
+    User user = userDao.findUserById(userId);
+    if(user==null){
+        throw new UserNotFoundException(&quot;ID不存在&quot;);
+    }
+
+    //计算分页范围
+    int size = 3;
+    int start = size * page;
+
+    return notebookDao.findNotebookByPage(
+            userId, start, size); 
+}
+</code></pre>
+
+</li>
+<li>
+<p>测试 TestNotebookService:</p>
+<pre><code>@Test
+public void testFindByPage(){
+    String userId=&quot;333c6d0b-e4a2-4596-9902-a5d98c2f665a&quot;;
+    int page = 1;
+    List&lt;Map&lt;String, Object&gt;&gt; list=
+        service.listNotebooks(userId, page);
+    for (Map&lt;String, Object&gt; map : list) {
+        System.out.println(map);
+    }
+}
+</code></pre>
+
+</li>
+</ol>
+<h3>3. 控制器</h3>
+<ol>
+<li>
+<p>NotebookController</p>
+<pre><code>@RequestMapping(&quot;/page.do&quot;)
+@ResponseBody
+public JsonResult page(String userId, int page){
+    //调用业务层 notebookService
+    List&lt;Map&lt;String, Object&gt;&gt; list=
+        notebookService.listNotebooks(userId, page);
+    return new JsonResult(list);
+}
+</code></pre>
+
+</li>
+</ol>
+<h3>4. 页面JS</h3>
+<ol>
+<li>
+<p>重构, 在页面启动时候调用分页显示方法</p>
+<pre><code>//调用方法加载笔记本列表
+loadPagedNotebooks();
+</code></pre>
+
+</li>
+<li>
+<p>实现分页加载笔记本方法</p>
+<pre><code>function loadPagedNotebooks(){
+    //获取li.data('page'), 如果没有则是第一页
+    var more = $(this);
+    var page = 0;
+    if(more.data('page')){
+        page = more.data('page');
+    }
+    //page数据是 showPagedNotebooks 方法绑定到more按钮上的
+
+    var url = &quot;notebook/page.do&quot;;
+    var data = {userId: getCookie('userId'), 
+            page: page };
+    $.getJSON(url, data, function(result){
+        if(result.state==SUCCESS){
+            var notebooks = result.data;
+            showPagedNotebooks(notebooks, page);
+        }else{
+            alert(result.message);
+        }
+    });
+}
+</code></pre>
+
+</li>
+<li>
+<p>实现分页显示笔记本列表方法</p>
+<pre><code>function showPagedNotebooks(notebooks, page){
+    //把数据显示到 笔记本 列表区域
+    var ul = $('#pc_part_1 .contacts-list');
+    if(page==0){
+        ul.empty();
+    }else{
+        //删除 &lt;li class=more &gt;元素
+        ul.find('.more').remove();
+    }
+    //显示 每个笔记本
+    for(var i=0; i&lt;notebooks.length; i++){
+        var notebook = notebooks[i];
+        var li = notebookTemplate.replace(
+            '[name]', notebook.name);
+        //绑定笔记本Id到li
+        li = $(li).data('notebookId', notebook.id);
+        ul.append(li);
+    }
+    //在more上绑定 page+1;
+    var more = $(moreTemplate);
+    more.data('page', page+1);
+    //显示more按钮
+    if(notebooks.length!=0){
+        ul.append(more);
+    }
+}
+
+var moreTemplate = '&lt;li class=&quot;online more&quot;&gt;'+
+    '&lt;a&gt;'+
+    '&lt;i class=&quot;fa fa-plus&quot; title=&quot;online&quot; '+
+        ' rel=&quot;tooltip-bottom&quot;&gt;'+
+    '&lt;/i&gt; 加载更多&lt;/a&gt;&lt;/li&gt;'
+
+var notebookTemplate=
+    '&lt;li class=&quot;online notebook&quot;&gt;'+
+    '&lt;a&gt;'+
+    '&lt;i class=&quot;fa fa-book&quot; title=&quot;online&quot; '+
+        ' rel=&quot;tooltip-bottom&quot;&gt;'+
+    '&lt;/i&gt; [name]&lt;/a&gt;&lt;/li&gt;';
+</code></pre>
+
+<blockquote>
+<p>为了编译绑定事件, 重构显示模板, 增加了li 的 class: notebook more</p>
+</blockquote>
+</li>
+<li>
+<p>重构事件绑定:</p>
+<pre><code>//利用事件冒泡,绑定li被点击时候执行事件程序
+//绑定笔记本列表中li元素被点击的事件
+$('#pc_part_1').on('click',
+        'li.notebook',loadNotes);
+//监听翻页请求 more
+$('#pc_part_1').on('click',
+        'li.more', loadPagedNotebooks); 
+</code></pre>
+
+</li>
+</ol>
+<h2>选择器</h2>
+<ol>
+<li>li</li>
+<li>#note</li>
+<li>.more</li>
+<li>ul li 多层</li>
+<li>ul&gt;li 一层派生选择器</li>
+<li>li, a</li>
+<li>li.more 选择元素是li并且class是more的元素</li>
+<li>li#user</li>
+</ol>
+<h2>MyBatis 支持了自增类型列</h2>
+<p>可以在保存对象时候, 自动的将生成自增的ID读取回来.</p>
+<p>如: </p>
+<pre><code>Person p = new Person(&quot;范传奇&quot;);
+personDao.addPerson(p);//保存preson到数据库
+//  自动的将生成自增的ID读取回来.
+System.out.println(person.getId()); //3
+</code></pre>
+
+<p>完整案例:</p>
+<ol>
+<li>
+<p>建表, 包含自增类型ID</p>
+<pre><code>create table p_person(
+    id int not null AUTO_INCREMENT,
+    name varchar(100),
+    primary key(id)
+);
+</code></pre>
+
+</li>
+<li>
+<p>创建实体类 Person</p>
+<pre><code>public class Person implements Serializable{
+    private static final long serialVersionUID = -46131913216270686L;
+
+    private Integer id;
+    private String name;
+
+    public Person() {
+    }
+
+    public Person(String name) {
+        super();
+        this.name = name;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Person other = (Person) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Person [id=&quot; + id + &quot;, name=&quot; + name + &quot;]&quot;;
+    }
+}
+</code></pre>
+
+</li>
+<li>
+<p>定义PersonDao</p>
+<pre><code>public interface PersonDao {
+
+    int addPerson(Person person);
+
+}
+</code></pre>
+
+</li>
+<li>
+<p>定义SQL PersonMapper.xml</p>
+<pre><code> &lt;!-- useGeneratedKeys 用于支持自增类型ID类的
+ 属性, keyProperty用于设置Person中的自增的Bean属性
+ MyBatis会自动的将自动生成的ID赋值到Person的id属性 --&gt;
+ &lt;insert id=&quot;addPerson&quot;
+    parameterType=&quot;cn.tedu.cloudnote.entity.Person&quot;
+    useGeneratedKeys=&quot;true&quot;
+    keyProperty=&quot;id&quot;&gt;
+    insert into p_person
+        (id, name)
+    values
+        (null, #{name})
+ &lt;/insert&gt;
+</code></pre>
+
+</li>
+<li>
+<p>测试 </p>
+<pre><code>public class TestPersonDao extends TestCaseBase {
+
+    PersonDao dao;
+
+    @Before
+    public void initDao(){
+        dao = ctx.getBean(&quot;personDao&quot;, PersonDao.class);
+    }
+
+    @Test
+    public void testAddPerson(){
+        Person p = new Person(&quot;刘老师&quot;);
+        //不用为p设置ID属性!
+        int n = dao.addPerson(p);
+        //MyBatis会自动返回自动增加的ID
+        System.out.println(p); 
+    }
+
+}
+</code></pre>
+
+<blockquote>
+<p>结果: 经过测试可以发现, MyBatis 可以将自动生成的ID返回.</p>
+</blockquote>
+</li>
+</ol>
+<h2>关联映射</h2>
+<p>MyBatis支持复杂关联映射:</p>
+<p><img src="2.png" /></p>
+<p>关联映射查询: 一次查询就可以将Post对象的复杂引用关系查询回来:</p>
+<p>定义SQL, 并且初始化数据: </p>
+<pre><code>create table p_person(
+    id int not null AUTO_INCREMENT,
+    name varchar(100),
+    primary key(id)
+);
+
+insert into p_person (name) values ('李老师');
+insert into p_person (id, name) values (null,'李老师');
+
+
+create table p_comment(
+    id int not null AUTO_INCREMENT,
+    title varchar(100),
+    post_id int,
+    primary key(id)
+);
+
+create table p_post(
+    id int not null AUTO_INCREMENT, 
+    title varchar(100),
+    person_id int,
+    primary key(id)
+);
+
+insert into p_post (id, title, person_id)
+    values (null, '今天天气不错', 1);
+
+insert into p_post (id, title, person_id)
+    values (null, '高考又来了', 1);
+
+insert into p_comment(id, title, post_id)
+    values ( null, '少穿了哪一件呀?', 1);
+
+insert into p_comment(id, title, post_id)
+    values (null, '冻成狗', 1);
+insert into p_comment(id, title, post_id)
+    values (null, '喜欢下雪', 1);
+</code></pre>
+
+<p>实现复杂关联查询:</p>
+<ol>
+<li>
+<p>实体类</p>
+<pre><code>public class Person implements Serializable{
+    private static final long serialVersionUID = -46131913216270686L;
+
+    private Integer id;
+    private String name;
+
+    public Person() {
+    }
+
+    public Person(String name) {
+        super();
+        this.name = name;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Person other = (Person) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Person [id=&quot; + id + &quot;, name=&quot; + name + &quot;]&quot;;
+    }
+}
+
+
+public class Comment implements Serializable {
+    private static final long serialVersionUID = -5881249634665160256L;
+
+    private Integer id;
+    private String title;
+
+    public Comment() {
+    }
+
+    public Comment(String title) {
+        super();
+        this.title = title;
+    }
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Comment other = (Comment) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Comment [id=&quot; + id + &quot;, title=&quot; + title + &quot;]&quot;;
+    }
+
+}
+
+
+public class Post implements Serializable{
+    private static final long serialVersionUID = -4722438109030592372L;
+
+    private Integer id;
+    private String title;
+
+    /** 发帖人 */
+    private Person person;
+
+    /** 当前帖子收到的回复 */
+    private List&lt;Comment&gt; comments = 
+            new ArrayList&lt;Comment&gt;();
+
+    public Post() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public List&lt;Comment&gt; getComments() {
+        return comments;
+    }
+
+    public void setComments(List&lt;Comment&gt; comments) {
+        this.comments = comments;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Post [id=&quot; + id + &quot;, title=&quot; + title + &quot;, person=&quot; + person + &quot;, comments=&quot; + comments + &quot;]&quot;;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Post other = (Post) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+}
+</code></pre>
+
+</li>
+<li>
+<p>定义查询接口方法 PersonDao</p>
+<pre><code>Post findPostById(Integer id);
+</code></pre>
+
+</li>
+<li>
+<p>定义基本属性查询映射 PersonMapper.xml:</p>
+<pre><code> &lt;!-- 利用 resultMap 进行自定义映射 --&gt;
+ &lt;resultMap type=&quot;cn.tedu.cloudnote.entity.Post&quot; 
+    id=&quot;postMap&quot;&gt;
+    &lt;!-- 映射 Post 的主键id --&gt;
+    &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;
+    &lt;!-- 映射 普通列Post 的 title --&gt;
+    &lt;result column=&quot;title&quot; property=&quot;title&quot;/&gt;
+ &lt;/resultMap&gt;
+
+ &lt;!-- 复杂映射必须指定 resultMap:postMap  --&gt;
+ &lt;select id=&quot;findPostById&quot;
+    parameterType=&quot;int&quot;
+    resultMap=&quot;postMap&quot;&gt;
+    select 
+        po.id,
+        po.title,
+        pe.id as person_id,
+        pe.name
+    from 
+        p_post po
+    left join p_person pe 
+        on po.person_id = pe.id
+    where 
+        po.id = #{id}
+ &lt;/select&gt;
+</code></pre>
+
+</li>
+<li>
+<p>测试 TestPersonDao</p>
+<pre><code>@Test
+public void testFindPostById(){
+    Post post = dao.findPostById(1);
+    System.out.println(post); 
+}
+
+测试结果:
+    Post [id=1, title=今天天气不错, person=null, comments=[]]
+</code></pre>
+
+<blockquote>
+<p>说明: 成功映射了基本属性 id 和 title, 但是person和comments属性没有映射成功.</p>
+</blockquote>
+</li>
+<li>
+<p>映射person属性: 重构ResultMap 利用 association 元素映射 person属性: </p>
+<pre><code> &lt;!-- 利用 resultMap 进行自定义映射 --&gt;
+ &lt;resultMap type=&quot;cn.tedu.cloudnote.entity.Post&quot; 
+    id=&quot;postMap&quot;&gt;
+    &lt;!-- 映射 Post 的主键id --&gt;
+    &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;
+    &lt;!-- 映射 普通列Post 的 title --&gt;
+    &lt;result column=&quot;title&quot; property=&quot;title&quot;/&gt;
+
+    &lt;!-- 映射 person 属性 --&gt;
+    &lt;association property=&quot;person&quot; 
+        javaType=&quot;cn.tedu.cloudnote.entity.Person&quot;&gt;
+        &lt;!-- Person 的主键 id --&gt;
+        &lt;id column=&quot;person_id&quot; property=&quot;id&quot;/&gt;
+        &lt;!-- 映射普通列Person 的 name --&gt;
+        &lt;result column=&quot;name&quot; property=&quot;name&quot;/&gt; 
+    &lt;/association&gt;
+
+ &lt;/resultMap&gt;
+</code></pre>
+
+<blockquote>
+<p>将SQL查询结果的 person_id 和 name 列映射到Person的id和name属性.</p>
+</blockquote>
+</li>
+<li>
+<p>测试 testFindPostById() 方法:</p>
+<pre><code>测试结果:
+Post [id=1, title=今天天气不错, person=Person [id=1, name=李老师], comments=[]]
+</code></pre>
+
+<blockquote>
+<p>说明: 进一步成功的映射了 person属性, 不再为null了</p>
+</blockquote>
+</li>
+<li>
+<p>映射 comments 属性: 利用collection属性映射commons集合, 为了配合collection属性, 增加一个 select 元素定义SQL查询: </p>
+<pre><code> &lt;!-- 利用 resultMap 进行自定义映射 --&gt;
+ &lt;resultMap type=&quot;cn.tedu.cloudnote.entity.Post&quot; 
+    id=&quot;postMap&quot;&gt;
+    &lt;!-- 映射 Post 的主键id --&gt;
+    &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;
+    &lt;!-- 映射 普通列Post 的 title --&gt;
+    &lt;result column=&quot;title&quot; property=&quot;title&quot;/&gt;
+
+    &lt;association property=&quot;person&quot; 
+        javaType=&quot;cn.tedu.cloudnote.entity.Person&quot;&gt;
+        &lt;!-- Person 的主键 id --&gt;
+        &lt;id column=&quot;person_id&quot; property=&quot;id&quot;/&gt;
+        &lt;!-- 映射普通列Person 的 name --&gt;
+        &lt;result column=&quot;name&quot; property=&quot;name&quot;/&gt; 
+    &lt;/association&gt;
+
+    &lt;!-- collection 映射List集合 利用到 另外一个查询
+    findComments 查询结果 
+    column=&quot;id&quot; 是传递给findComments查询的参数--&gt;
+
+    &lt;collection property=&quot;comments&quot; 
+        select=&quot;findComments&quot; column=&quot;id&quot;&gt;&lt;/collection&gt;
+
+ &lt;/resultMap&gt;
+
+ &lt;!-- 此SQL查询的ID 与上面collection 的select属性一致 --&gt;
+ &lt;select id=&quot;findComments&quot; 
+    parameterType=&quot;int&quot;
+    resultType=&quot;cn.tedu.cloudnote.entity.Comment&quot;&gt;
+    select 
+        id,
+        title
+    from 
+        p_comment
+    where 
+        post_id = #{id}
+ &lt;/select&gt;      
+</code></pre>
+
+</li>
+<li>
+<p>测试 testFindPostById() 方法:</p>
+<pre><code>测试结果:
+Post [id=1, title=今天天气不错, person=Person [id=1, name=李老师], comments=[Comment [id=1, title=少穿了哪一件呀?], Comment [id=2, title=冻成狗], Comment [id=3, title=喜欢下雪]]]
+</code></pre>
+
+<blockquote>
+<p>说明: 进一步成功的映射了 comments属性, 不再为空集[]了</p>
+</blockquote>
+</li>
+<li>
+<p>Good Luck! </p>
+</li>
+</ol>
+<hr />
+<h2>作业</h2>
+<ol>
+<li>实现笔记本的分页查询</li>
+<li>实现复杂关联映射案例</li>
+</ol>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>day05</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>云笔记</h1>
+<h2>笔记列表功能</h2>
+<p>实现原理:</p>
+<p><img src="1.png" /></p>
+<h3>1. 编写测试SQL</h3>
+<ol>
+<li>
+<p>编写SQL查询笔记表中的笔记本ID</p>
+<pre><code>-- 查询笔记本id
+select 
+    cn_notebook_id 
+from 
+    cn_note
+</code></pre>
+
+</li>
+<li>
+<p>编写查询笔记列表的SQL</p>
+<pre><code>-- 查询笔记列表
+select
+    cn_note_id as id,
+    cn_note_title as title
+from
+    cn_note
+where 
+    cn_notebook_id='0b11444a-a6d6-45ff-8d46-282afaa6a655'
+</code></pre>
+
+</li>
+</ol>
+<h3>2. 编写数据访问层</h3>
+<ol>
+<li>
+<p>编写数据层接口:</p>
+<pre><code>public interface NoteDao {
+
+    /**
+     * 查询一个笔记本中的全部笔记信息
+     * @param notebookId
+     * @return 笔记列表, 每个元素包含id和titile
+     */
+    List&lt;Map&lt;String, Object&gt;&gt; findNotesByNotebookId(
+            String notebookId);
+}
+</code></pre>
+
+</li>
+<li>
+<p>编写Mapper文件</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;  
+&lt;!DOCTYPE mapper PUBLIC &quot;-//ibatis.apache.org//DTD Mapper 3.0//EN&quot;      
+ &quot;http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd&quot;&gt;
+
+&lt;mapper namespace=&quot;cn.tedu.cloudnote.dao.NoteDao&quot;&gt;  
+    &lt;select id=&quot;findNotesByNotebookId&quot;
+        parameterType=&quot;string&quot;
+        resultType=&quot;map&quot;&gt;
+        select
+            cn_note_id as id,
+            cn_note_title as title
+        from
+            cn_note
+        where 
+            cn_notebook_id=#{notebookId}
+    &lt;/select&gt;
+&lt;/mapper&gt;   
+</code></pre>
+
+</li>
+<li>
+<p>测试</p>
+<pre><code>public class TestNoteDao extends TestCaseBase{
+    NoteDao dao;
+    @Before
+    public void initDao(){
+        dao = ctx.getBean(&quot;noteDao&quot;, NoteDao.class);
+    }
+    @Test
+    public void testFindNotesByNotebookId(){
+        String notebookId=&quot;0b11444a-a6d6-45ff-8d46-282afaa6a655&quot;;
+        List&lt;Map&lt;String, Object&gt;&gt; list=
+            dao.findNotesByNotebookId(notebookId);
+        for (Map&lt;String, Object&gt; map : list) {
+            System.out.println(map);
+        }
+    }
+}
+</code></pre>
+
+</li>
+</ol>
+<h3>3. 编写业务层</h3>
+<ol>
+<li>
+<p>编写业务层接口:</p>
+<pre><code>public interface NoteService {
+    /**
+     * 笔记列表功能 
+     * @param notebookId 笔记本ID
+     * @return 笔记本中的笔记列表, 每个笔记对象包含
+     *   id和title两个属性 
+     * @throws NotebookNotFoundException 笔记本不存在
+     *   时候抛出异常 
+     */
+    List&lt;Map&lt;String, Object&gt;&gt; listNotes(
+            String notebookId)
+        throws NotebookNotFoundException;
+}
+
+//业务异常类
+public class NotebookNotFoundException extends RuntimeException {
+    private static final long serialVersionUID = 8937501369306626438L;
+
+    public NotebookNotFoundException() {
+    }
+
+    public NotebookNotFoundException(String message) {
+        super(message);
+    }
+
+    public NotebookNotFoundException(Throwable cause) {
+        super(cause);
+    }
+
+    public NotebookNotFoundException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public NotebookNotFoundException(String message, Throwable cause, boolean enableSuppression,
+            boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
+
+}
+</code></pre>
+
+</li>
+<li>
+<p>实现业务层方法</p>
+<ol>
+<li>
+<p>实现业务层方法</p>
+<pre><code>@Service(&quot;noteService&quot;)
+public class NoteServiceImpl implements NoteService {
+
+    @Resource 
+    private NoteDao noteDao;
+
+    @Resource
+    private NotebookDao notebookDao;
+
+    public List&lt;Map&lt;String, Object&gt;&gt; 
+        listNotes(String notebookId) 
+        throws NotebookNotFoundException {
+        if(notebookId==null || notebookId.trim().isEmpty()){
+            throw new NotebookNotFoundException(&quot;Id空&quot;);
+        }
+        Notebook notebook = notebookDao
+                .findNotebookById(notebookId);
+        if(notebook==null){
+            throw new NotebookNotFoundException(
+                &quot;笔记本不存在&quot;);
+        }
+        return noteDao.findNotesByNotebookId(notebookId);
+    }
+}
+</code></pre>
+
+</li>
+<li>
+<p>添加实体类 Notebook</p>
+<pre><code>public class Notebook implements Serializable{
+    private static final long serialVersionUID = -8341731366267651270L;
+
+    private String id;
+    private String name;
+    private String typeId;
+    private String userId;
+    private String desc;
+    private Timestamp createtime;
+
+    public Notebook() {
+    }
+
+    public Notebook(String id, String name, String typeId, String userId, String desc, Timestamp createtime) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.typeId = typeId;
+        this.userId = userId;
+        this.desc = desc;
+        this.createtime = createtime;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(String typeId) {
+        this.typeId = typeId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public Timestamp getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Timestamp createtime) {
+        this.createtime = createtime;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Notebook [id=&quot; + id + &quot;, name=&quot; + name + &quot;, typeId=&quot; + typeId + &quot;, userId=&quot; + userId + &quot;, desc=&quot; + desc
+                + &quot;, createtime=&quot; + createtime + &quot;]&quot;;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Notebook other = (Notebook) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+}
+</code></pre>
+
+</li>
+<li>
+<p>添加实体访问接口方法 NotebookDao</p>
+<pre><code>Notebook findNotebookById(String notebookId);
+</code></pre>
+
+</li>
+<li>
+<p>添加SQL NotebookMapper.xml:</p>
+<pre><code>&lt;select id=&quot;findNotebookById&quot;
+    parameterType=&quot;string&quot;
+    resultType=&quot;cn.tedu.cloudnote.entity.Notebook&quot;&gt;
+    select 
+        cn_notebook_id          as id,
+        cn_user_id                  as userId,
+        cn_notebook_type_id         as typeId,
+        cn_notebook_name            as name,
+        cn_notebook_desc            as &quot;desc&quot;,
+        cn_notebook_createtime  as createtime
+    from
+        cn_notebook
+    where 
+        cn_notebook_id=#{notebookId}            
+&lt;/select&gt;
+</code></pre>
+
+<blockquote>
+<p>提示: 请先对SQL进行测试, 在复制到XML文件中!</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li>
+<p>测试</p>
+<pre><code>public class TestNotebookService 
+    extends TestCaseBase{
+
+    NotebookService service;
+
+    @Before
+    public void initService(){
+        service = ctx.getBean(&quot;notebookService&quot;,
+            NotebookService.class);
+    }
+
+    @Test
+    public void testListNotebooks(){
+        String userId=&quot;333c6d0b-e4a2-4596-9902-a5d98c2f665a&quot;;
+        List&lt;Map&lt;String, Object&gt;&gt; list=
+            service.listNotebooks(userId);
+        for (Map&lt;String, Object&gt; map : list) {
+            System.out.println(map);
+        }
+    }
+}
+</code></pre>
+
+</li>
+</ol>
+<h3>4. 编写控制器</h3>
+<ol>
+<li>
+<p>编写控制器类:</p>
+<pre><code>@Controller
+@RequestMapping(&quot;/note&quot;)
+public class NoteController extends BaseController {
+
+    @Resource
+    private NoteService noteService;
+
+    @RequestMapping(&quot;/list.do&quot;)
+    @ResponseBody
+    public JsonResult list(String notebookId){
+        List&lt;Map&lt;String, Object&gt;&gt; list=
+            noteService.listNotes(notebookId);
+        return new JsonResult(list);
+    }   
+}
+</code></pre>
+
+</li>
+<li>
+<p>部署测试:</p>
+<pre><code>http://localhost:8080/cloudnote/note/list.do?notebookId=0b11444a-a6d6-45ff-8d46-282afaa6a655
+
+http://localhost:8080/cloudnote/note/list.do?notebookId=0b1
+</code></pre>
+
+</li>
+</ol>
+<h3>5. 编写JS脚步</h3>
+<ol>
+<li>
+<p>在ready方法中绑定li点击事件</p>
+<pre><code>//利用事件冒泡,绑定li被点击时候执行事件程序
+//绑定笔记本列表中li元素被点击的事件
+$('#pc_part_1').on('click','li',loadNotes);
+</code></pre>
+
+</li>
+<li>
+<p>添加事件处理方法 </p>
+<pre><code>function loadNotes(){
+    //在事件方法中的this就是当前发生事件的对象 li
+    var li = $(this);
+    console.log(li);
+    //获取在显示时候绑定到li中的笔记本ID值
+    var id = li.data('notebookId');
+    console.log(id);
+
+    //设置选中高亮效果
+    li.parent().find('a').removeClass('checked');
+    li.find('a').addClass('checked');
+
+    var url = 'note/list.do';
+    var data= {notebookId: id };
+
+    $.getJSON(url, data, function(result){
+        //console.log(result);
+        if(result.state==0){
+            var notes = result.data;
+            showNotes(notes);
+        }else{
+            alert(result.message);
+        }
+    });
+}
+</code></pre>
+
+</li>
+<li>
+<p>重构showNotebooks方法, 将笔记本ID绑定到LI对象</p>
+<pre><code>//JQuery 提供了数据绑定方法, 可以在DOM元素上
+//绑定任何数据. 
+// li.data(key, value) 获取数据 li.data(key)
+li = $(li).data('notebookId', notebook.id);
+</code></pre>
+
+<blockquote>
+<p>NotebookId 传递的原理:</p>
+</blockquote>
+<p><img src="2.png" /></p>
+</li>
+<li>
+<p>添加方法显示笔记列表</p>
+<pre><code>var noteTemplate = 
+    '&lt;li class=&quot;online&quot;&gt;'+
+    '   &lt;a&gt;&lt;i class=&quot;fa fa-file-text-o&quot; title=&quot;online&quot; rel=&quot;tooltip-bottom&quot;&gt;&lt;/i&gt; [title]&lt;button type=&quot;button&quot; class=&quot;btn btn-default btn-xs btn_position btn_slide_down&quot;&gt;&lt;i class=&quot;fa fa-chevron-down&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/a&gt;'+
+    '   &lt;div class=&quot;note_menu&quot; tabindex=&quot;-1&quot;&gt;'+
+    '       &lt;dl&gt;'+
+    '           &lt;dt&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-default btn-xs btn_move&quot; title=&quot;移动至...&quot;&gt;&lt;i class=&quot;fa fa-random&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/dt&gt;'+
+    '           &lt;dt&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-default btn-xs btn_share&quot; title=&quot;分享&quot;&gt;&lt;i class=&quot;fa fa-sitemap&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/dt&gt;'+
+    '           &lt;dt&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-default btn-xs btn_delete&quot; title=&quot;删除&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/dt&gt;'+
+    '       &lt;/dl&gt;'+
+    '   &lt;/div&gt;'+
+    '&lt;/li&gt;';
+
+function showNotes(notes){
+    var ul = $('#pc_part_2 .contacts-list');
+    ul.empty();
+    for(var i=0; i&lt;notes.length; i++){
+        var note = notes[i];
+        var li = noteTemplate.replace('[title]', 
+                note.title);
+        ul.append(li);
+    }
+}
+</code></pre>
+
+</li>
+</ol>
+<h2>显示笔记功能</h2>
+<p>原理:</p>
+<p><img src="3.png" /></p>
+<h3>1. 编写数据访问层</h3>
+<ol>
+<li>
+<p>编写持久层接口方法 NoteDao</p>
+<pre><code>Note findNoteById(String noteId);
+</code></pre>
+
+</li>
+<li>
+<p>编写实体类 Note</p>
+<pre><code>public class Note implements Serializable{
+    private static final long serialVersionUID = -8176239102696538864L;
+
+    private String id;
+    private String notebookId;
+    private String userId;
+    private String statusId;
+    private String typeId;
+    private String title;
+    private String body;
+    private Long createTime;
+    private Long lastModifyTime;
+
+    public Note() {
+    }
+
+    public Note(String id, String notebookId, String userId, String statusId, String typeId, String title, String body,
+            Long createTime, Long lastModifyTime) {
+        super();
+        this.id = id;
+        this.notebookId = notebookId;
+        this.userId = userId;
+        this.statusId = statusId;
+        this.typeId = typeId;
+        this.title = title;
+        this.body = body;
+        this.createTime = createTime;
+        this.lastModifyTime = lastModifyTime;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNotebookId() {
+        return notebookId;
+    }
+
+    public void setNotebookId(String notebookId) {
+        this.notebookId = notebookId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(String statusId) {
+        this.statusId = statusId;
+    }
+
+    public String getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(String typeId) {
+        this.typeId = typeId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public Long getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Long createTime) {
+        this.createTime = createTime;
+    }
+
+    public Long getLastModifyTime() {
+        return lastModifyTime;
+    }
+
+    public void setLastModifyTime(Long lastModifyTime) {
+        this.lastModifyTime = lastModifyTime;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Note other = (Note) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Note [id=&quot; + id + &quot;, notebookId=&quot; + notebookId + &quot;, userId=&quot; + userId + &quot;, statusId=&quot; + statusId
+                + &quot;, typeId=&quot; + typeId + &quot;, title=&quot; + title + &quot;, body=&quot; + body + &quot;, createTime=&quot; + createTime
+                + &quot;, lastModifyTime=&quot; + lastModifyTime + &quot;]&quot;;
+    }
+
+}
+</code></pre>
+
+</li>
+<li>
+<p>编写SQL NoteMapper.xml</p>
+<pre><code>&lt;select id=&quot;findNoteById&quot;
+    parameterType=&quot;string&quot;
+    resultType=&quot;cn.tedu.cloudnote.entity.Note&quot;&gt;
+    select
+        cn_note_id as id,
+        cn_notebook_id as notebookId,
+        cn_user_id as userId,
+        cn_note_status_id as statusId,
+        cn_note_type_id as typeId,
+        cn_note_title as title,
+        cn_note_body as body,
+        cn_note_create_time as createTime,
+        cn_note_last_modify_time as lastModifyTime
+    from
+        cn_note 
+    where
+        cn_note_id=#{noteId}
+&lt;/select&gt;
+</code></pre>
+
+</li>
+<li>
+<p>测试 TestNoteDao</p>
+<pre><code>@Test
+public void testFindNoteById(){
+    String noteId = &quot;019cd9e1-b629-4d8d-afd7-2aa9e2d6afe0&quot;;
+    Note note = dao.findNoteById(noteId);
+    System.out.println(note);
+}
+</code></pre>
+
+</li>
+</ol>
+<h3>2. 编写业务层</h3>
+<ol>
+<li>
+<p>添加业务层方法 NoteService</p>
+<pre><code>Note getNote(String noteId)
+    throws NoteNotFoundException;
+</code></pre>
+
+</li>
+<li>
+<p>添加业务层异常类</p>
+<pre><code>public class NoteNotFoundException extends RuntimeException {
+
+    private static final long serialVersionUID = -3058836737932943698L;
+
+    public NoteNotFoundException() {
+    }
+
+    public NoteNotFoundException(String message) {
+        super(message);
+    }
+
+    public NoteNotFoundException(Throwable cause) {
+        super(cause);
+    }
+
+    public NoteNotFoundException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public NoteNotFoundException(String message, Throwable cause, boolean enableSuppression,
+            boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
+
+}
+</code></pre>
+
+</li>
+<li>
+<p>实现业务层方法 NoteServiceImpl</p>
+<pre><code>public Note getNote(String noteId)
+        throws NoteNotFoundException {
+    if(noteId==null||noteId.trim().isEmpty()){
+        throw new NoteNotFoundException(&quot;ID空&quot;);
+    }
+    Note note = noteDao.findNoteById(noteId);
+    if(note==null){
+        throw new NoteNotFoundException(&quot;id错误&quot;);
+    }
+    return note;
+}
+</code></pre>
+
+</li>
+<li>
+<p>测试 TestNoteService</p>
+<pre><code>@Test
+public void testGetNote(){
+    String noteId = &quot;019cd9e1-b629-4d8d-afd7-2aa9e2d6afe0&quot;;
+    Note note = service.getNote(noteId);
+    System.out.println(note);
+}
+</code></pre>
+
+</li>
+</ol>
+<h3>3. 添加控制器方法</h3>
+<ol>
+<li>
+<p>添加控制器方法NoteController</p>
+<pre><code>@RequestMapping(&quot;/get.do&quot;)
+@ResponseBody
+public JsonResult get(String noteId){
+    Note note = noteService.getNote(noteId);
+    return new JsonResult(note);
+}   
+</code></pre>
+
+</li>
+<li>
+<p>部署测试</p>
+<pre><code>http://localhost:8080/cloudnote/note/get.do?noteId=019cd9e1-b629-4d8d-afd7-2aa9e2d6afe0
+</code></pre>
+
+</li>
+</ol>
+<h3>4. 添加JS脚本</h3>
+<ol>
+<li>
+<p>重构showNotes方法, 在li上绑定笔记ID</p>
+<pre><code>//绑定noteId到li对象
+li = $(li).data('noteId', note.id);
+</code></pre>
+
+</li>
+<li>
+<p>在ready方法中监听 笔记列表点击事件</p>
+<pre><code>$('#pc_part_2').on('click','li',loadNote);
+</code></pre>
+
+</li>
+<li>
+<p>添加事件响应方法 loadNote</p>
+<pre><code>function loadNote(){
+    var li = $(this);
+    //获取在显示时候绑定到li中的笔记ID值
+    var id = li.data('noteId');
+
+    //设置选中高亮效果
+    li.parent().find('a').removeClass('checked');
+    li.find('a').addClass('checked');
+
+    var url = 'note/get.do';
+    var data= {noteId: id };
+
+    $.getJSON(url, data, function(result){
+        //console.log(result);
+        if(result.state==0){
+            var note = result.data;
+            showNote(note);
+        }else{
+            alert(result.message);
+        }
+    });
+}
+</code></pre>
+
+</li>
+<li>
+<p>添加显示笔记方法 showNote</p>
+<pre><code>function showNote(note){
+    $('#input_note_title').val(note.title);
+    um.setContent(note.body);
+}
+</code></pre>
+
+</li>
+<li>
+<p>测试: Good Luck!</p>
+</li>
+</ol>
+<hr />
+<h2>作业</h2>
+<ol>
+<li>实现笔记列表功能</li>
+<li>实现显示笔记功能</li>
+</ol>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

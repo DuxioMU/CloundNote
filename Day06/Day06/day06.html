@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>day06</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">云笔记</h1>
+
+<h2 id="toc_1">保存笔记功能</h2>
+
+<p>原理:</p>
+
+<p><img src="1.png" alt=""></p>
+
+<h3 id="toc_2">1. 开发持久层</h3>
+
+<ol>
+<li><p>添加持久层方法 NoteDao</p>
+
+<div><pre><code class="language-none">int updateNote(Note note);</code></pre></div></li>
+<li><p>添加SQL NoteMapper.xml</p>
+
+<div><pre><code class="language-none">&lt;update id=&quot;updateNote&quot;
+    parameterType=&quot;cn.tedu.cloudnote.entity.Note&quot;&gt;
+    update
+        cn_note 
+    set
+        &lt;if test=&quot;notebookId!=null&quot;&gt;
+            cn_notebook_id=#{notebookId},
+        &lt;/if&gt;
+        &lt;if test=&quot;userId!=null&quot;&gt;
+            cn_user_id=#{userId},
+        &lt;/if&gt;
+        &lt;if test=&quot;statusId!=null&quot;&gt;
+            cn_note_status_id=#{statusId},
+        &lt;/if&gt;
+        &lt;if test=&quot;typeId!=null&quot;&gt;
+            cn_note_type_id=#{typeId},
+        &lt;/if&gt;
+        &lt;if test=&quot;title!=null&quot;&gt;
+            cn_note_title=#{title},
+        &lt;/if&gt;
+        &lt;if test=&quot;body!=null&quot;&gt;
+            cn_note_body=#{body},
+        &lt;/if&gt;
+        cn_note_last_modify_time=#{lastModifyTime}
+    where 
+        cn_note_id=#{id} 
+&lt;/update&gt;</code></pre></div></li>
+<li><p>测试 TestNoteDao</p>
+
+<div><pre><code class="language-none">@Test
+public void testUpdateNote(){
+    String noteId = &quot;019cd9e1-b629-4d8d-afd7-2aa9e2d6afe0&quot;;
+    Note note = dao.findNoteById(noteId);
+    System.out.println(note);
+    note.setTitle(&quot;Test&quot;);
+    note.setBody(&quot;Test123&quot;);
+    dao.updateNote(note);
+    note = dao.findNoteById(noteId);
+    System.out.println(note); 
+}</code></pre></div></li>
+</ol>
+
+<h3 id="toc_3">2. 实现业务层</h3>
+
+<ol>
+<li><p>添加业务层方法 NoteService</p>
+
+<div><pre><code class="language-none">boolean update(String noteId, String title, String body)
+    throws NoteNotFoundException;</code></pre></div></li>
+<li><p>实现业务层方法NoteServiceImpl</p>
+
+<div><pre><code class="language-none">public boolean update(String noteId, String title, String body) throws NoteNotFoundException {
+    if(noteId==null || noteId.trim().isEmpty()){
+        throw new NoteNotFoundException(&quot;ID不能空&quot;);
+    }
+    Note note = noteDao.findNoteById(noteId);
+    if(note==null){
+        throw new NoteNotFoundException(&quot;没有对应的笔记&quot;);
+    }
+    Note data = new Note();
+    if(title!=null &amp;&amp; !title.equals(note.getTitle())){
+        data.setTitle(title);
+    }
+    if(body!=null &amp;&amp; !body.equals(note.getBody())){
+        data.setBody(body);;
+    }
+    data.setId(noteId);
+    data.setLastModifyTime(System.currentTimeMillis());
+    int n = noteDao.updateNote(data);
+    return n==1;
+}</code></pre></div></li>
+<li><p>测试 TestNoteService</p>
+
+<div><pre><code class="language-none">@Test
+public void testUpdate(){
+    String id = &quot;019cd9e1-b629-4d8d-afd7-2aa9e2d6afe0&quot;;
+    String title = &quot;Java基础&quot;;
+    String body = &quot;今天天气不错&quot;;
+    boolean b = service.update(id, title, body);
+    Note note = service.getNote(id);
+    System.out.println(b);
+    System.out.println(note);
+}</code></pre></div></li>
+</ol>
+
+<h3 id="toc_4">3. 开发控制器方法</h3>
+
+<ol>
+<li><p>添加控制器方法</p>
+
+<div><pre><code class="language-none">@RequestMapping(&quot;/update.do&quot;)
+@ResponseBody
+public JsonResult update(String noteId,
+        String title, String body){
+    boolean success = noteService.update(noteId,title, body);
+    return new JsonResult(success);
+}   </code></pre></div></li>
+<li><p>测试</p>
+
+<div><pre><code class="language-none">http://localhost:8080/cloudnote/note/update.do?noteId=019cd9e1-b629-4d8d-afd7-2aa9e2d6afe0&amp;title=Java</code></pre></div></li>
+</ol>
+
+<h3 id="toc_5">4. 界面JS编码</h3>
+
+<ol>
+<li><p>重构showNote方法绑定note数据</p>
+
+<div><pre><code class="language-none">function showNote(note){
+    //绑定笔记信息, 用于保存操作
+    $(&#39;#input_note_title&#39;).data(&#39;note&#39;, note);
+
+    $(&#39;#input_note_title&#39;).val(note.title);
+    um.setContent(note.body);
+}</code></pre></div></li>
+<li><p>绑定保存按钮的点击事件</p>
+
+<div><pre><code class="language-none">//绑定点击保存笔记事件
+$(&#39;#save_note&#39;).on(&#39;click&#39;, updateNote);</code></pre></div></li>
+<li><p>添加保存事件方法</p>
+
+<div><pre><code class="language-none">function updateNote(){
+    var url = &#39;note/update.do&#39;;
+    var note = $(&#39;#input_note_title&#39;).data(&#39;note&#39;);
+    //data:发送到服务器的参数            
+    var data = {noteId:note.id};
+    var modified = false;
+    var title = $(&#39;#input_note_title&#39;).val();
+    //如果title更改了就向服务器发送title数据
+    if(title &amp;&amp; title!=note.title){
+        data.title = title;
+        modified = true;
+    }
+    var body = um.getContent();
+    //如果body更改了就向服务器发送body数据
+    if(body &amp;&amp; body != note.body ){
+        data.body = body;
+        modified = true;
+    }
+    //如果有更改就发起AJAX请求
+    if(modified){
+        //设置&quot;显示效果&quot;
+        $(&#39;#save_note&#39;).attr(&#39;disabled&#39;,&#39;disabled&#39;)
+            .html(&#39;保存中...&#39;);
+
+        $.post(url, data, function(result){
+            setTimeout(function(){
+                //移除显示效果
+                $(&#39;#save_note&#39;).removeAttr(&#39;disabled&#39;)
+                    .html(&#39;保存笔记&#39;);
+            },1000);
+            if(result.state == 0){
+                //console.log(&quot;Success!&quot;);
+                //内存中的 note 改成新的数据
+                note.title = title;
+                note.body = body;
+                //更新笔记列表项目
+                var l = $(&#39;#pc_part_2 .checked&#39;).parent();
+                $(&#39;#pc_part_2 .checked&#39;).remove()
+                var li = noteTemplate.replace(
+                        &#39;[title]&#39;, title);
+                var a = $(li).find(&#39;a&#39;);
+                a.addClass(&#39;checked&#39;);
+                l.prepend(a);
+            }else{
+                alert(result.mesage);
+            }
+        });
+    }
+}</code></pre></div></li>
+<li><p>部署测试</p></li>
+</ol>
+
+<h1 id="toc_6">JS 的对象</h1>
+
+<h2 id="toc_7">创建空白对象</h2>
+
+<div><pre><code class="language-none">var obj = new Object();
+var obj1 = {};</code></pre></div>
+
+<h2 id="toc_8">JS 对象可以动态的添加属性</h2>
+
+<div><pre><code class="language-none">obj.age = 5;
+obj.name = &quot;范萌萌&quot;;</code></pre></div>
+
+<ol>
+<li>obj.name 用于访问属性</li>
+<li>如果属性不存在, 则返回 undefined</li>
+<li>对属性赋初始值时候,可以添加新属性</li>
+<li><p>delete 用于删除属性</p>
+
+<div><pre><code class="language-none">delete obj.age;</code></pre></div></li>
+<li><p>可以使用[属性名] 访问属性</p>
+
+<div><pre><code class="language-none">obj[&#39;phone&#39;]=110;
+var p = obj[&#39;phone&#39;];</code></pre></div>
+
+<blockquote>
+<p>特殊情况下: 属性名不能直接调用时候必须使用[]</p>
+</blockquote></li>
+</ol>
+
+<h2 id="toc_9">JS对象的方法</h2>
+
+<p>JS对象的方法: 是一个属性! 是引用了函数对象的属性!</p>
+
+<div><pre><code class="language-none">javascript
+obj.hello = function(){
+    console.log(&quot;Hello World!&quot;);
+};</code></pre></div>
+
+<blockquote>
+<p>访问方法时候: obj.hello 访问方法的引用, obj.hello()执行方法</p>
+
+<p>在方法中访问当前对象的属性时候, this.不能省略! </p>
+</blockquote>
+
+<div><pre><code class="language-none">javascript
+obj.who = function(){
+    console.log(&quot;I am &quot; + this.name);
+};</code></pre></div>
+
+<blockquote>
+<p>方法是属性, 可以重新赋值(相当于方法的重写)</p>
+</blockquote>
+
+<h2 id="toc_10">　使用JSON语法创建对象</h2>
+
+<div><pre><code class="language-none">javascript
+var obj = {
+    age:1, 
+    name:&quot;Tom&quot;,
+    hello:function(){
+        console.log(&quot;Hello&quot;);
+    }
+};
+var obj1 = {};
+obj1.age = 1;
+obj1.name = &quot;Jerry&quot;;
+obj1.hello = function(){
+    console.log(&quot;Hello&quot;);
+};</code></pre></div>
+
+<h2 id="toc_11">添加笔记功能</h2>
+
+<p>原理：</p>
+
+<p><img src="2.png" alt=""></p>
+
+<h3 id="toc_12">1. 持久层</h3>
+
+<ol>
+<li><p>添加持久层方法NoteDao</p>
+
+<div><pre><code class="language-none">int addNote(Note note);</code></pre></div></li>
+<li><p>​添加SQL， NoteMapper.xml</p>
+
+<div><pre><code class="language-none">&lt;insert id=&quot;addNote&quot;
+    parameterType=&quot;cn.tedu.note.entity.Note&quot;&gt;
+    insert into cn_note
+        (cn_note_id,
+        cn_notebook_id, 
+        cn_user_id,
+        cn_note_status_id,
+        cn_note_type_id,
+        cn_note_title,
+        cn_note_body,
+        cn_note_create_time,
+        cn_note_last_modify_time)
+    values
+        (#{id},#{notebookId},#{userId},
+        #{statusId},#{typeId},#{title},
+        #{body},#{createTime},
+        #{lastModifyTime})
+&lt;/insert&gt;</code></pre></div></li>
+<li><p>测试 TestNoteDao</p></li>
+</ol>
+
+<h3 id="toc_13">2. 业务层</h3>
+
+<ol>
+<li><p>业务层方法 NoteService</p>
+
+<div><pre><code class="language-none">public Note addNote(String userId, 
+        String notebookId, String title)
+        throws UserNotFoundException,
+        NotebookNotFoundException;</code></pre></div></li>
+<li><p>实现业务方法 NoteServiceImpl</p>
+
+<div><pre><code class="language-none">public Note addNote(String userId, 
+        String notebookId, String title)
+        throws UserNotFoundException, 
+        NotebookNotFoundException {
+    if(userId==null||userId.trim().isEmpty()){
+        throw new UserNotFoundException(&quot;ID空&quot;);
+    }
+    User user=userDao.findUserById(userId);
+    if(user==null){
+        throw new UserNotFoundException(&quot;木有人&quot;);
+    }
+    if(notebookId==null||notebookId.trim().isEmpty()){
+        throw new NotebookNotFoundException(&quot;ID空&quot;);
+    }
+    Notebook notebook=notebookDao.findNotebookById(notebookId);
+    if(notebook==null){
+        throw new NotebookNotFoundException(&quot;没有笔记本&quot;);
+    }
+    if(title==null || title.trim().isEmpty()){
+        title=&quot;葵花宝典&quot;;
+    }
+    String id = UUID.randomUUID().toString();
+    String statusId = &quot;0&quot;;
+    String typeId = &quot;0&quot;;
+    String body = &quot;&quot;;
+    long time=System.currentTimeMillis();
+    Note note = new Note(id, notebookId,
+        userId, statusId, typeId, title, 
+        body, time, time);
+    int n = noteDao.addNote(note);
+    if(n!=1){
+        throw new NoteNotFoundException(&quot;保存失败&quot;);
+    }
+    return note;
+}</code></pre></div></li>
+<li><p>测试 TestNoteService</p>
+
+<div><pre><code class="language-none">... ...</code></pre></div></li>
+</ol>
+
+<h3 id="toc_14">3.控制器</h3>
+
+<ol>
+<li><p>控制器方法NoteController</p>
+
+<div><pre><code class="language-none">@RequestMapping(&quot;/add.do&quot;)
+@ResponseBody
+public JsonResult add(String userId, 
+        String notebookId, String title){
+    Note note=noteService.addNote(
+        userId, notebookId, title);
+    return new JsonResult(note);
+}</code></pre></div></li>
+<li><p>浏览器测试</p>
+
+<div><pre><code class="language-none">... ...</code></pre></div></li>
+</ol>
+
+<h3 id="toc_15">4.JS脚本</h3>
+
+<ol>
+<li><p>绑定事件</p>
+
+<div><pre><code class="language-none">//绑定添加笔记按钮
+$(&#39;#add_note&#39;).on(&#39;click&#39;, showAddNoteDialog); 
+
+//绑定关闭按键事件
+$(&#39;#can&#39;).on(&#39;click&#39;, &#39;.cancel, .close&#39;, closeDialog);
+
+//绑定添加笔记对话框中的 保存按钮事件
+$(&#39;#can&#39;).on(&#39;click&#39;, &#39;.save-note&#39;, saveNote);</code></pre></div></li>
+<li><p> 关闭窗口事件方法</p>
+
+<div><pre><code class="language-none">function closeDialog(){
+    $(&#39;#can&#39;).empty();
+    $(&#39;.opacity_bg&#39;).hide();
+}</code></pre></div></li>
+<li><p>重构loadNotes方法，在点击笔记本时候绑定笔记本ID</p>
+
+<div><pre><code class="language-none">//绑定笔记本ID， 用于添加笔记功能
+$(&#39;#input_note_title&#39;).data(&#39;notebookId&#39;, id);</code></pre></div></li>
+<li><p>打开添加笔记对话框方法</p>
+
+<div><pre><code class="language-none">function showAddNoteDialog(){
+    var notebookId=$(&#39;#input_note_title&#39;).data(&#39;notebookId&#39;);
+    if(notebookId){
+        $(&#39;.opacity_bg&#39;).show();
+        $(&#39;#can&#39;).load(&#39;alert/alert_note.html&#39;);
+    }else{
+        alset(&quot;请选择笔记本！&quot;);
+    }
+}   </code></pre></div></li>
+<li><p>保存笔记按钮事件方法</p>
+
+<div><pre><code class="language-none">//笔记对话框中的 保存按钮事件
+function saveNote(){
+    var url = &#39;note/add.do&#39;;
+    var notebookId=$(&#39;#input_note_title&#39;).data(&#39;notebookId&#39;);
+    var title = $(&#39;#can #input_note&#39;).val();
+
+    var data = {userId:getCookie(&#39;userId&#39;),
+        notebookId:notebookId,
+        title:title};
+    //console.log(data);
+
+    $.post(url, data, function(result){
+        if(result.state==SUCCESS){
+            var note=result.data;
+            //console.log(note);
+            showNote(note);
+            closeDialog();   
+            //123 
+        }else{
+            alert(result.message);
+        }
+    });
+}</code></pre></div></li>
+</ol>
+
+
+
+
+</body>
+
+</html>

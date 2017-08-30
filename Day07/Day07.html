@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Day07</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>云笔记</h1>
+<h2>如何检查Ajax通讯过程</h2>
+<p>利用Chrome浏览器的调试功能可以检查Ajax通讯过程, 可以利用这个工具检查AJAX通讯时候的错误.</p>
+<p><img src="network.png" /></p>
+<h2>添加笔记功能</h2>
+<p>原理：</p>
+<p><img src="add.png" /></p>
+<h3>1. 持久层</h3>
+<ol>
+<li>
+<p>添加持久层方法NoteDao</p>
+<pre><code>int addNote(Note note);
+</code></pre>
+
+</li>
+<li>
+<p>​添加SQL， NoteMapper.xml</p>
+<pre><code>&lt;insert id=&quot;addNote&quot;
+    parameterType=&quot;cn.tedu.cloudnote.entity.Note&quot;&gt;
+    insert into cn_note
+        (cn_note_id,
+        cn_notebook_id, 
+        cn_user_id,
+        cn_note_status_id,
+        cn_note_type_id,
+        cn_note_title,
+        cn_note_body,
+        cn_note_create_time,
+        cn_note_last_modify_time)
+    values
+        (#{id},#{notebookId},#{userId},
+        #{statusId},#{typeId},#{title},
+        #{body},#{createTime},
+        #{lastModifyTime})
+&lt;/insert&gt;
+</code></pre>
+
+</li>
+<li>
+<p>测试 TestNoteDao</p>
+</li>
+</ol>
+<h3>2. 业务层</h3>
+<ol>
+<li>
+<p>业务层方法 NoteService</p>
+<pre><code>public Note addNote(String userId, 
+        String notebookId, String title)
+        throws UserNotFoundException,
+        NotebookNotFoundException;
+</code></pre>
+
+</li>
+<li>
+<p>实现业务方法 NoteServiceImpl</p>
+<pre><code>public Note addNote(String userId, 
+        String notebookId, String title)
+        throws UserNotFoundException, 
+        NotebookNotFoundException {
+    if(userId==null||userId.trim().isEmpty()){
+        throw new UserNotFoundException(&quot;ID空&quot;);
+    }
+    User user=userDao.findUserById(userId);
+    if(user==null){
+        throw new UserNotFoundException(&quot;木有人&quot;);
+    }
+    if(notebookId==null||notebookId.trim().isEmpty()){
+        throw new NotebookNotFoundException(&quot;ID空&quot;);
+    }
+    Notebook notebook=notebookDao.findNotebookById(notebookId);
+    if(notebook==null){
+        throw new NotebookNotFoundException(&quot;没有笔记本&quot;);
+    }
+    if(title==null || title.trim().isEmpty()){
+        title=&quot;葵花宝典&quot;;
+    }
+    String id = UUID.randomUUID().toString();
+    String statusId = &quot;0&quot;;
+    String typeId = &quot;0&quot;;
+    String body = &quot;&quot;;
+    long time=System.currentTimeMillis();
+    Note note = new Note(id, notebookId,
+        userId, statusId, typeId, title, 
+        body, time, time);
+    int n = noteDao.addNote(note);
+    if(n!=1){
+        throw new NoteNotFoundException(&quot;保存失败&quot;);
+    }
+    return note;
+}
+</code></pre>
+
+</li>
+<li>
+<p>测试 TestNoteService</p>
+<pre><code>... ...
+</code></pre>
+
+</li>
+</ol>
+<h3>3.控制器</h3>
+<ol>
+<li>
+<p>控制器方法NoteController</p>
+<pre><code>@RequestMapping(&quot;/add.do&quot;)
+@ResponseBody
+public JsonResult add(String userId, 
+        String notebookId, String title){
+    Note note=noteService.addNote(
+        userId, notebookId, title);
+    return new JsonResult(note);
+}
+</code></pre>
+
+</li>
+<li>
+<p>浏览器测试</p>
+<pre><code>... ...
+</code></pre>
+
+</li>
+</ol>
+<h3>4.JS脚本</h3>
+<ol>
+<li>
+<p>重构 alert/alert_note.html, 为按钮添加新的class, 用于绑定响应的事件:</p>
+<pre><code>&lt;button type=&quot;button&quot; class=&quot;btn btn-default cancle cancel&quot; data-dismiss=&quot;modal&quot;&gt;取 消&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary sure save-note&quot;&gt;创 建&lt;/button&gt;
+</code></pre>
+
+<blockquote>
+<p>提示: 取消按钮添加了 class cancle,创 建按钮添加了 save-note 
+注意: alert_note.html 文件的编码必须是utf-8的!</p>
+</blockquote>
+</li>
+<li>
+<p>绑定事件</p>
+<pre><code>//绑定添加笔记按钮
+$('#add_note').on('click', showAddNoteDialog); 
+
+//绑定关闭按键事件
+$('#can').on('click', '.cancel, .close', closeDialog);
+
+//绑定添加笔记对话框中的 保存按钮事件
+$('#can').on('click', '.save-note', saveNote);
+</code></pre>
+
+</li>
+<li>
+<p> 关闭窗口事件方法</p>
+<pre><code>function closeDialog(){
+    $('#can').empty();
+    $('.opacity_bg').hide();
+}
+</code></pre>
+
+</li>
+<li>
+<p>重构loadNotes方法，在点击笔记本时候绑定笔记本ID</p>
+<pre><code>//绑定笔记本ID， 用于添加笔记功能
+$('#input_note_title').data('notebookId', id);
+</code></pre>
+
+</li>
+<li>
+<p>打开添加笔记对话框方法</p>
+<pre><code>function showAddNoteDialog(){
+    var notebookId=$('#input_note_title').data('notebookId');
+    if(notebookId){
+        $('.opacity_bg').show();
+        $('#can').load('alert/alert_note.html');
+    }else{
+        alert(&quot;请选择笔记本！&quot;);
+    }
+}   
+</code></pre>
+
+</li>
+<li>
+<p>保存笔记按钮事件方法</p>
+<pre><code>//笔记对话框中的 保存按钮事件
+function saveNote(){
+    var url = 'note/add.do';
+    var notebookId=$('#input_note_title')
+        .data('notebookId');
+    var title = $('#can #input_note').val();
+
+    var data = {userId:getCookie('userId'),
+        notebookId:notebookId,
+        title:title};
+    //console.log(data);
+
+    $.post(url, data, function(result){
+        if(result.state==SUCCESS){
+            var note=result.data;
+            //console.log(note);
+            showNote(note);
+            //找到显示笔记列表的ul对象
+            var ul = $('#pc_part_2 .contacts-list');
+            var li = noteTemplate.replace(
+                    '[title]', note.title);
+            li = $(li);
+            li.find('a').addClass('checked');
+            ul.find('a').removeClass('checked');
+            ul.prepend(li);
+
+            closeDialog();   
+            //123 
+        }else{
+            alert(result.message);
+        }
+    });
+}
+</code></pre>
+
+</li>
+</ol>
+<h2>添加新笔记本功能</h2>
+<p>请学员参考 添加笔记功能自行实现</p>
+<h2>显示笔记子菜单</h2>
+<p>在笔记列表项目上隐藏了一个子菜单, 用于处理笔记相关功能</p>
+<h3>1. 监听菜单按钮弹出子菜单</h3>
+<ol>
+<li>
+<p>更新笔记列表模板noteTemplate, 增加class用于识别按钮</p>
+<pre><code>var noteTemplate = 
+    '&lt;li class=&quot;online&quot;&gt;'+
+    '   &lt;a&gt;&lt;i class=&quot;fa fa-file-text-o&quot; title=&quot;online&quot; rel=&quot;tooltip-bottom&quot;&gt;&lt;/i&gt; [title]&lt;button type=&quot;button&quot; class=&quot;btn btn-default btn-xs btn_position btn_slide_down note_menu_btn&quot;&gt;&lt;i class=&quot;fa fa-chevron-down&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/a&gt;'+
+    '   &lt;div class=&quot;note_menu&quot; tabindex=&quot;-1&quot;&gt;'+
+    '       &lt;dl&gt;'+
+    '           &lt;dt&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-default btn-xs btn_move&quot; title=&quot;移动至...&quot;&gt;&lt;i class=&quot;fa fa-random&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/dt&gt;'+
+    '           &lt;dt&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-default btn-xs btn_share&quot; title=&quot;分享&quot;&gt;&lt;i class=&quot;fa fa-sitemap&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/dt&gt;'+
+    '           &lt;dt&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-default btn-xs btn_delete&quot; title=&quot;删除&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/dt&gt;'+
+    '       &lt;/dl&gt;'+
+    '   &lt;/div&gt;'+
+    '&lt;/li&gt;'; 
+</code></pre>
+
+<blockquote>
+<p>注意: 增加class note<em>menu</em>btn</p>
+</blockquote>
+</li>
+<li>
+<p>监听冒泡事件, 在 note<em>menu</em>btn 按钮按下时候弹出菜单:</p>
+<pre><code>//监听笔记子菜单按钮点击事件
+$('#pc_part_2').on('click', '.note_menu_btn', showNoteMenu);
+</code></pre>
+
+</li>
+<li>
+<p>添加事件处理方法 用于弹出子菜单:</p>
+<pre><code>function showNoteMenu(){
+    //如果不是选定的 笔记项目就不显示菜单
+    //找到 子菜单, 调用show()方法
+    //this 就是点击的按钮对象, 利用按钮的上下文关系
+    //找到子菜单, 并且调用show()方法
+    var menu=$(this).parent('.checked').next();
+    menu.toggle();
+    return false;//阻止事件继续传播
+}
+</code></pre>
+
+</li>
+<li>
+<p>添加事件监听在点击文档其他位置时候关闭子菜单</p>
+<pre><code>//点击文档的任何位置都收起笔记子菜单
+$(document).click(closeNoteMenu);
+</code></pre>
+
+<blockquote>
+<p>注意: showNoteMenu必须返回false阻止事件的继续冒泡传播, 如果不阻止就会触发关闭事件方法!</p>
+</blockquote>
+</li>
+<li>
+<p>添加关闭子菜单的事件处理方法:</p>
+<pre><code>function closeNoteMenu(){
+    $('.note_menu').hide();
+}
+</code></pre>
+
+</li>
+</ol>
+<blockquote>
+<p>菜单的Dom层级关系如下(参考):</p>
+</blockquote>
+<pre><code>&lt;body&gt; //document.click(关闭菜单)
+    &lt;div id=&quot;pc_part_2&quot;&gt; //on('click', '.note_menu_btn', 
+                 显示菜单return false)
+        &lt;li&gt;
+            &lt;a&gt;
+                &lt;button class=&quot;note_menu_btn&quot;&gt;&lt;/button&gt; //click
+            &lt;/a&gt;
+            &lt;div class=&quot;note-menu&quot;&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+
+<h2>移动笔记功能:</h2>
+<p>原理:</p>
+<p><img src="move.png" /></p>
+<blockquote>
+<p>移动笔记功能就是更新笔记的笔记本ID即可</p>
+</blockquote>
+<h3>1. 持久层</h3>
+<pre><code>&gt; 重用 updateNote方法
+</code></pre>
+
+<h3>2. 业务层</h3>
+<ol>
+<li>
+<p>NoteService</p>
+<pre><code>public boolean moveNote(String noteId, 
+    String notebookId)
+    throws NoteNotFoundException,
+    NotebookNotFoundException;
+</code></pre>
+
+</li>
+<li>
+<p>NoteServiceImpl</p>
+<pre><code>public boolean moveNote(String noteId, String notebookId) throws NoteNotFoundException, NotebookNotFoundException {
+    if(notebookId==null||notebookId.trim().isEmpty()){
+        throw new NotebookNotFoundException(&quot;ID空&quot;);
+    }
+    Notebook notebook=notebookDao.findNotebookById(notebookId);
+    if(notebook==null){
+        throw new NotebookNotFoundException(&quot;没有笔记本&quot;);
+    }
+    if(noteId==null || noteId.trim().isEmpty()){
+        throw new NoteNotFoundException(&quot;ID不能空&quot;);
+    }
+    Note note = noteDao.findNoteById(noteId);
+    if(note==null){
+        throw new NoteNotFoundException(&quot;没有对应的笔记&quot;);
+    }
+    Note data = new Note();
+    data.setId(noteId);
+    data.setNotebookId(notebookId);
+    data.setLastModifyTime(System.currentTimeMillis());
+    System.out.println(data); 
+    int n = noteDao.updateNote(data);
+    return n==1;
+}
+</code></pre>
+
+</li>
+<li>
+<p>测试</p>
+<pre><code>略...
+</code></pre>
+
+</li>
+</ol>
+<h3>3. 控制器</h3>
+<ol>
+<li>
+<p>NoteController</p>
+<pre><code>@RequestMapping(&quot;/move.do&quot;)
+@ResponseBody
+public JsonResult move(String noteId, 
+        String notebookId){
+    boolean success=noteService.moveNote(noteId, notebookId);
+    return new JsonResult(success);
+}
+</code></pre>
+
+</li>
+<li>
+<p>测试</p>
+<pre><code>略...
+</code></pre>
+
+</li>
+</ol>
+<h3>4. 界面</h3>
+<ol>
+<li>
+<p>监听笔记子菜单移动按钮事件:</p>
+<pre><code>//打开移动笔记对话框
+$('#pc_part_2').on('click', '.btn_move', 
+        showMoveDialog); 
+</code></pre>
+
+</li>
+<li>
+<p>添加打开笔记对话框事件方法:</p>
+<pre><code>function showMoveDialog(){
+    //显示移动笔记的对话框, 在页面加载成功以后, 将
+    //列出笔记列表信息
+    $('#can').load('alert/alert_move.html', function(){
+        //获取全部笔记本列表 li
+        //将li中的笔记信息填充到select列表中
+        $('#moveSelect').empty();
+        $('#pc_part_1 li').each(function(){
+            var li = $(this);
+            //创建option对象
+            var opt = $('&lt;option&gt;&lt;/option&gt;')
+                .val(li.data('notebookId'))
+                .html(li.text().trim());
+            //添加到 select 列表中
+            $('#moveSelect').append(opt);   
+        });
+    });
+}
+</code></pre>
+
+</li>
+<li>
+<p>重构 alert/alert_move.html 添加 class</p>
+<pre><code>&lt;button type=&quot;button&quot; class=&quot;btn btn-default cancle cancel&quot; data-dismiss=&quot;modal&quot;&gt;取 消&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary sure move-note&quot;&gt;确 定&lt;/button&gt;
+</code></pre>
+
+</li>
+<li>
+<p>监听移动对话框中的 确定事件</p>
+<pre><code>//绑定移动笔记对话框中的 移动笔记按钮事件
+$('#can').on('click', '.move-note', 
+    moveNote);
+</code></pre>
+
+</li>
+<li>
+<p>添加移动笔记事件处理方法</p>
+<pre><code>function moveNote(){
+    var url = &quot;note/move.do&quot;;
+    //得到选定的笔记, 获取当前选定笔记的ID
+    var li = $('#pc_part_2 .checked').parent();
+    var data = {noteId: li.data('noteId'),
+            notebookId: $('#moveSelect').val()}
+    $.post(url, data, function(result){
+        if(result.state==SUCCESS){
+            //更新显示效果
+            li.remove();
+            closeDialog();
+        }else{
+            alert(result.message);
+        }
+    })
+}
+</code></pre>
+
+</li>
+</ol>
+<h2>删除笔记功能:</h2>
+<p>原理:</p>
+<p><img src="remove.png" /></p>
+<h2>分享笔记功能:</h2>
+<p>原理:</p>
+<p><img src="share.png" /></p>
+<hr />
+<h2>作业</h2>
+<ol>
+<li>实现添加笔记功能</li>
+<li>实现添加笔记本功能</li>
+<li>实现移动笔记功能</li>
+</ol>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.cloudnote.dao.NoteDao">	
+	<select id="findNotesByNotebookId"
+		parameterType="string"
+		resultType="map">
+		select
+			cn_note_id as id,
+			cn_note_title as title
+		from
+			cn_note
+		where 
+			cn_notebook_id=#{notebookId}
+	</select>
+
+	<select id="findNoteById"
+		parameterType="string"
+		resultType="cn.tedu.cloudnote.entity.Note">
+		select
+			cn_note_id as id,
+			cn_notebook_id as notebookId,
+			cn_user_id as userId,
+			cn_note_status_id as statusId,
+			cn_note_type_id as typeId,
+			cn_note_title as title,
+			cn_note_body as body,
+			cn_note_create_time as createTime,
+			cn_note_last_modify_time as lastModifyTime
+		from
+			cn_note 
+		where
+			cn_note_id=#{noteId}
+	</select>
+
+	<!-- NoteMapper.xml -->
+	<update id="updateNote"
+		parameterType="cn.tedu.cloudnote.entity.Note">
+		update
+			cn_note 
+		<set>
+			<if test="notebookId!=null">
+				cn_notebook_id=#{notebookId},
+			</if>
+			<if test="userId!=null">
+				cn_user_id=#{userId},
+			</if>
+			<if test="statusId!=null">
+				cn_note_status_id=#{statusId},
+			</if>
+			<if test="typeId!=null">
+				cn_note_type_id=#{typeId},
+			</if>
+			<if test="title!=null">
+				cn_note_title=#{title},
+			</if>
+			<if test="body!=null">
+				cn_note_body=#{body},
+			</if>
+			cn_note_last_modify_time=#{lastModifyTime}
+		</set>
+		where 
+			cn_note_id=#{id} 
+	</update>
+
+
+	<insert id="addNote"
+		parameterType="cn.tedu.cloudnote.entity.Note">
+		insert into cn_note
+			(cn_note_id,
+			cn_notebook_id, 
+			cn_user_id,
+			cn_note_status_id,
+			cn_note_type_id,
+			cn_note_title,
+			cn_note_body,
+			cn_note_create_time,
+			cn_note_last_modify_time)
+		values
+			(#{id},#{notebookId},#{userId},
+			#{statusId},#{typeId},#{title},
+			#{body},#{createTime},
+			#{lastModifyTime})
+	</insert>
+	
+	<!-- NoteMapper.xml -->
+	<delete id="deleteNoteById"
+		parameterType="string">
+		delete from
+			cn_note
+		where 
+			cn_note_id=#{id}
+ 
+	</delete>
+	
+	<delete id="deleteNotesById">
+		delete from
+			cn_note
+		where 
+			cn_note_id in
+		<foreach collection="array"
+			item="id"
+			open="(" separator="," close=")">
+			#{id}
+		</foreach>
+		<choose>
+			<when test=""></when>
+		</choose>
+	</delete>
+	
+	<select id="findNotesByParam"
+		parameterType="map"
+		resultType="map">
+		select 
+			cn_note_id as id,
+			cn_note_title as title
+		from 
+			cn_note
+		<where>
+			<trim suffixOverrides="or">
+				<choose>
+					<when test="title!=null">
+						cn_note_title like #{title} or
+					</when>		
+					<when test="key!=null">
+						cn_note_title like #{key} or
+					</when>
+				</choose>
+				<choose>
+					<when test="body!=null">
+						cn_note_body like #{body} 
+					</when>
+					<when test="key!=null">
+						cn_note_body like #{key}
+					</when>
+				</choose>
+			</trim>
+ 		</where>
+	</select>
+	
+	<select id="findNotesByKey"
+		resultType="map">
+		select 
+			cn_note_id as id,
+			cn_note_title as title
+		from 
+			cn_note
+		<where>
+			<trim suffixOverrides="or">
+				<choose>
+					<when test="title!=null">
+						cn_note_title like #{title} or
+					</when>		
+					<when test="key!=null">
+						cn_note_title like #{key} or
+					</when>
+				</choose>
+				<choose>
+					<when test="body!=null">
+						cn_note_body like #{body} 
+					</when>
+					<when test="key!=null">
+						cn_note_body like #{key}
+					</when>
+				</choose>
+			</trim>
+		</where>
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

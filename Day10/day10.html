@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>day10</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>云笔记</h1>
+<h2>文件的下载</h2>
+<p>HTTP 支持任何文件类型的下载</p>
+<p>请参考: <a href="http://doc.tedu.cn/rfc/rfc2616.txt">http://doc.tedu.cn/rfc/rfc2616.txt</a></p>
+<p>文件下载原理: Web 服务器将需要发送的文件按照HTTP协议封装为Response包, 发送到客户端, 客户端浏览器根据Response中的协议头决定如何处理文件.</p>
+<p><img src="http.png" /></p>
+<h2>文件下载原理</h2>
+<p>利用Java程序(Servlet, Spring MVC) 将数据按照HTTP标准封装为Response包,发送到浏览器客户端就可以实现文件的下载.</p>
+<h3>利用Servlet生成图片发送浏览器:</h3>
+<ol>
+<li>
+<p>利用Servlet 生成图片, 并且按照HTTP协议标准发送的浏览器</p>
+<pre><code>public class ImageServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest req, 
+            HttpServletResponse resp) 
+            throws ServletException, IOException {
+        //获取要发送的图片数据
+        byte[] png = createPng();
+        resp.setContentType(&quot;image/png&quot;);
+        resp.setContentLength(png.length);
+        //将png图片写入body
+        resp.getOutputStream().write(png);
+        resp.getOutputStream().close();
+    }
+
+    //动态生成图片数据
+    public byte[] createPng() throws IOException{
+        //1. 创建图片对象
+        BufferedImage img = new BufferedImage(
+            200, 100, BufferedImage.TYPE_3BYTE_BGR);
+        img.setRGB(100, 50, 0xffffff); 
+        //2. 将图片编码为 png
+        ByteArrayOutputStream out=
+                new ByteArrayOutputStream();
+        ImageIO.write(img, &quot;png&quot;, out);
+        out.close();
+        //3. 得到所有的bytes
+        byte[] ary = out.toByteArray();
+        return ary;
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>提示:　服务器需要先发送ContentType, 和ContentLength, 再将png数据放在消息Body发送到客户端.</p>
+</blockquote>
+</li>
+<li>
+<p>部署Servlet</p>
+<pre><code>&lt;servlet&gt;
+     &lt;servlet-name&gt;png&lt;/servlet-name&gt;
+     &lt;servlet-class&gt;cn.tedu.cloudnote.web.ImageServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+     &lt;servlet-name&gt;png&lt;/servlet-name&gt;
+     &lt;url-pattern&gt;/demopng&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+</code></pre>
+
+</li>
+<li>
+<p>浏览器测试:</p>
+<pre><code>http://localhost:8080/cloudnote/demopng
+</code></pre>
+
+</li>
+<li>
+<p>在网页中显示 demo.html</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;!-- demo.html --&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;DEMO&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;显示图片&lt;/h1&gt;
+    &lt;img alt=&quot;&quot; src=&quot;demopng&quot;&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</li>
+<li>
+<p>浏览器测试:</p>
+<pre><code>http://localhost:8080/cloudnote/demo.html
+</code></pre>
+
+</li>
+</ol>
+<h3>利用Spring MVC 动态生成图片</h3>
+<ol>
+<li>
+<p>编写控制器动态生成图片 DemoController</p>
+<pre><code>@Controller
+@RequestMapping(&quot;/demo&quot;)
+public class DemoController {
+
+    @RequestMapping(
+            produces=&quot;image/png&quot;,
+            value=&quot;/png.do&quot;)
+    @ResponseBody
+    public byte[] png() 
+        throws Exception{
+        byte[] png = createPng();
+        return png;//填充响应消息的 body
+    }
+
+    public byte[] createPng() throws IOException{
+        //1. 创建图片对象
+        BufferedImage img = new BufferedImage(
+            200, 100, BufferedImage.TYPE_3BYTE_BGR);
+        img.setRGB(100, 50, 0xffffff); 
+        //2. 将图片编码为 png
+        ByteArrayOutputStream out=
+                new ByteArrayOutputStream();
+        ImageIO.write(img, &quot;png&quot;, out);
+        out.close();
+        //3. 得到所有的bytes
+        byte[] ary = out.toByteArray();
+        return ary;
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>produces=&quot;image/png&quot; 用于向客户端发送协议头:ContentType
+@ResponseBody 会自动的将返回值 byte[] 封装到协议Body中发送到客户端. 
+@ResponseBody 不仅能处理Json返回值, 还能处理2进制数据byte[]</p>
+</blockquote>
+</li>
+<li>
+<p>客户端利用img标签显示图片: demo.html</p>
+<pre><code>&lt;img alt=&quot;&quot; src=&quot;demo/png.do&quot;&gt;  
+</code></pre>
+
+</li>
+<li>
+<p>测试</p>
+<pre><code>...
+</code></pre>
+
+</li>
+</ol>
+<h3>利用Spring MVC动态生成Excel文件:</h3>
+<ol>
+<li>
+<p>导入Excel处理API POI</p>
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.poi&lt;/groupId&gt;
+  &lt;artifactId&gt;poi&lt;/artifactId&gt;
+  &lt;version&gt;3.13&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+</li>
+<li>
+<p>利用Spring控制器生成Excel文件: DemoController</p>
+<pre><code>@RequestMapping(
+        produces=&quot;application/vnd.ms-excel&quot;,
+        value=&quot;/excel.do&quot;)
+@ResponseBody
+public byte[] excel(HttpServletResponse res) throws Exception{
+    byte[] bytes = createExcel();
+    //按照HTTP协议 RFC2616 19.5.1 Content-Disposition 发送文件名
+    res.addHeader(&quot;Content-Disposition&quot;,
+            &quot;attachment; filename=\&quot;hello.xls\&quot;&quot;);
+    //Content-Disposition: attachment; filename=&quot;fname.ext&quot;
+    return bytes;
+}
+
+private byte[] createExcel() throws IOException{
+    //1. 利用POI API创建Excel对象
+    //创建Excel 工作簿
+    HSSFWorkbook workbook = new HSSFWorkbook();
+    //创建工作表
+    HSSFSheet sheet = workbook.createSheet();
+    //在表中创建行和列
+    HSSFRow row = sheet.createRow(0);
+    HSSFCell cell = row.createCell(0);
+    //在 0,0 格子中写入 Hello World! 
+    cell.setCellValue(&quot;Hello World!&quot;); 
+    //调用业务层
+    //2. 将Excel对象编码为byte[]
+    ByteArrayOutputStream out = 
+            new ByteArrayOutputStream();
+    workbook.write(out);
+    out.close();
+
+    //3. 返回 byte[] 
+    byte[] bytes = out.toByteArray();
+    return bytes;
+}
+</code></pre>
+
+<blockquote>
+<p>produces=&quot;application/vnd.ms-excel&quot; 用于向客户端发送Excel文件的ContentType
+Content-Disposition 协议头用于发送下载保存文件的名称.</p>
+</blockquote>
+</li>
+<li>
+<p>在网页中添加下载链接 demo.html</p>
+<pre><code>&lt;h1&gt;下载Excel&lt;/h1&gt;
+&lt;a href=&quot;demo/excel.do&quot;&gt;Excel&lt;/a&gt;
+</code></pre>
+
+</li>
+<li>
+<p>测试...</p>
+</li>
+</ol>
+<h2>文件上载</h2>
+<p>文件上载标准为: <a href="http://doc.tedu.cn/rfc/rfc1867.txt">http://doc.tedu.cn/rfc/rfc1867.txt</a></p>
+<p>客户端要求: </p>
+<ol>
+<li>form设置编码属性 ENCTYPE=&quot;multipart/form-data&quot;</li>
+<li>form必须使用METHOD=&quot;POST&quot;</li>
+<li>在form中使用 <code>&lt;INPUT id=&quot;file1&quot; NAME=&quot;userfile1&quot; TYPE=&quot;file&quot;&gt;</code> 选取上载文件.</li>
+</ol>
+<p>服务器要求: </p>
+<ol>
+<li>利用上载API解析 multipart 上载请求.</li>
+</ol>
+<h3>利用Spring MVC 完成文件上载解析</h3>
+<p>Spring MVC 提供了上载请求解析功能, 其底层利用了 Apache 提供的 fileupload 组件. </p>
+<p>为了能够处理文件上载请求, Spring需要做如下配置:</p>
+<ol>
+<li>
+<p>导入fileupload组件:</p>
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;commons-fileupload&lt;/groupId&gt;
+  &lt;artifactId&gt;commons-fileupload&lt;/artifactId&gt;
+  &lt;version&gt;1.3.2&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+</li>
+<li>
+<p>配置上载解析器: spring-mvc.xml</p>
+<pre><code>&lt;bean id=&quot;multipartResolver&quot;
+    class=&quot;org.springframework.web.multipart.commons.CommonsMultipartResolver&quot;&gt;
+    &lt;property name=&quot;maxUploadSize&quot; value=&quot;1000000&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+
+</li>
+</ol>
+<p>Spring MVC处理文件上载:</p>
+<ol>
+<li>
+<p>客户端 demo.html:</p>
+<pre><code>&lt;h1&gt;上载文件&lt;/h1&gt;
+
+&lt;FORM ENCTYPE=&quot;multipart/form-data&quot; 
+    ACTION=&quot;demo/upload.do&quot; 
+    METHOD=&quot;POST&quot;&gt;
+    File to process: 
+    &lt;INPUT id=&quot;file1&quot; NAME=&quot;userfile1&quot; TYPE=&quot;file&quot;&gt;
+    &lt;INPUT id=&quot;file2&quot; NAME=&quot;userfile2&quot; TYPE=&quot;file&quot;&gt;
+    &lt;INPUT TYPE=&quot;submit&quot; VALUE=&quot;Send File&quot;&gt;
+&lt;/FORM&gt;
+</code></pre>
+
+</li>
+<li>
+<p>控制器</p>
+<pre><code>@RequestMapping(&quot;/upload.do&quot;)
+@ResponseBody
+public String upload(
+        MultipartFile userfile1,
+        MultipartFile userfile2) throws Exception{
+    //Spring MVC 会自动解析文件上载流, 将上载信息
+    // 保存到 MultipartFile 对象中, 注入控制器
+    //前提:导入Apache 文件上载包和配置上载解析器
+    System.out.println(userfile1);
+    System.out.println(userfile2);
+    //显示原始文件名
+    System.out.println(
+            userfile1.getOriginalFilename());
+    System.out.println(
+            userfile2.getOriginalFilename());
+    String name = userfile2.getOriginalFilename();
+    //处理文件名编码问题
+    name = new String(
+        name.getBytes(&quot;iso8859-1&quot;), &quot;utf-8&quot;);
+    System.out.println(name);
+    //获取文件的数据
+    byte[] data1 = userfile1.getBytes();
+    //byte[] data2 = userfile2.getBytes();
+    //InputStream in1 = userfile1.getInputStream();
+    InputStream in2 = userfile2.getInputStream();
+
+    //保存文件   /home/soft01/upload
+    File path = new File(&quot;D:/upload&quot;);
+    path.mkdir();
+    //文件名解码
+    String n1 = userfile1.getOriginalFilename();
+    n1 = new String(n1.getBytes(&quot;iso8859-1&quot;),&quot;utf-8&quot;);
+    //将文件保存到 upload 文件夹中
+    File file1 = new File(path, n1);
+    FileOutputStream out1 = 
+            new FileOutputStream(file1);
+    //将数据保存到流中
+    out1.write(data1);//将data1中全部的数据写到文件
+    out1.close();
+
+    //保存第二个文件
+    String n2 = userfile2.getOriginalFilename();
+    n2 = new String(n2.getBytes(&quot;iso-8859-1&quot;), &quot;utf-8&quot;);
+    File file2 = new File(path, n2);
+    FileOutputStream out2 = 
+            new FileOutputStream(file2);
+    //读取第2个文件的全部数据写到out2中
+    int b;
+    while((b=in2.read())!=-1){
+        out2.write(b);
+    }
+    in2.close();
+    out2.close();
+
+    //上载文件的其他信息: 
+    //获取文件的类型 
+    String type1 = userfile1.getContentType();
+    String type2 = userfile2.getContentType();
+    //获取表单输入input 控件的名字name
+    String name1 = userfile1.getName();
+    String name2 = userfile2.getName();
+    //获取文件的大小
+    long size1 = userfile1.getSize();
+    long size2 = userfile2.getSize();
+
+    return &quot;OK&quot;;
+}
+</code></pre>
+
+<blockquote>
+<p>注意: 控制器方法参数 userfile1 与上载<code>&lt;input type=&quot;file&quot; name=&quot;userfile1&quot;&gt;</code> 的name属性一致</p>
+</blockquote>
+</li>
+<li>
+<p>测试</p>
+<blockquote>
+<p>注意: 文件大小限制在 文件上载解析器中配置.</p>
+</blockquote>
+</li>
+</ol>
+<h3>Ajax上载控制</h3>
+<p>利用最新版本的 XMLHttpRequest 2 对象可以进行异步文件上载.</p>
+<p>检测浏览器是否支持异步上载:</p>
+<pre><code>    //检测 AJAX 文件上载需要的对象:
+    //1. FormData 对象
+    //2. XHR.onload
+    if(window.FormData){
+        console.log(&quot;FormData OK&quot;);
+    }
+
+    var xhr = new XMLHttpRequest();
+    if(xhr.upload){
+        console.log(&quot;upload OK&quot;);
+    }
+</code></pre>
+
+<p>利用Ajax实现文件上载 demo.html:</p>
+<pre><code>File to process: 
+&lt;INPUT id=&quot;file1&quot; NAME=&quot;userfile1&quot; TYPE=&quot;file&quot;&gt;
+&lt;INPUT id=&quot;file2&quot; NAME=&quot;userfile2&quot; TYPE=&quot;file&quot;&gt;
+
+&lt;h1&gt;Ajax上载文件&lt;/h1&gt;
+&lt;p&gt;XHR的2.0版本提供Ajax上载支持, 老浏览器不能使用&lt;/p&gt;
+&lt;input type=&quot;button&quot; onclick=&quot;upload()&quot; 
+    value=&quot;AJAX Upload&quot;&gt;
+&lt;p id=&quot;result&quot;&gt;&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+function upload(){
+    //检测 AJAX 文件上载需要的对象:
+    //1. FormData 对象
+    //2. XHR.onload
+    if(window.FormData){
+        console.log(&quot;FormData OK&quot;);
+    }
+
+    var xhr = new XMLHttpRequest();
+    if(xhr.upload){
+        console.log(&quot;upload OK&quot;);
+    }
+
+    //在内存中动态创建上载表单对象
+    var form = new FormData();
+    //获取 文件输入框中选定的文件对象
+    var file1 = 
+        document.getElementById('file1').files[0];
+    console.log(file1);
+    var file2 = 
+        document.getElementById('file2').files[0];
+    console.log(file2);
+
+    if(file1.size + file2.size &gt; 1000000){
+        alert(&quot;文件太大!&quot;);
+        return;
+    }
+
+    //向表单中添加两个文件
+    form.append('userfile1', file1);
+    form.append('userfile2', file2);
+
+    //绑定回调函数, 检测上载的结果
+    xhr.onload = function(){
+        if(xhr.status == 200){
+            //获取服务器发回的结果
+            var str = xhr.responseText;
+            //显示结果
+            var p = document.getElementById('result');
+            p.innerHTML=str;
+        }else{
+            alert(&quot;上载失败&quot;);
+        }
+    };
+
+    xhr.open('post', 'demo/upload.do');
+    xhr.send(form);//将表单数据发送到服务器 
+}
+&lt;/script&gt;
+</code></pre>
+
+<blockquote>
+<p>文件上载服务器端与上一个案例是一致的. </p>
+</blockquote>
+<hr />
+<h2>作业</h2>
+<ol>
+<li>实现图片文件下载功能</li>
+<li>实现Excel文件下载功能</li>
+<li>实现表单文件上载功能, 上载5个文件</li>
+<li>实现Ajax文件上载功能, 上载5个文件</li>
+</ol>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

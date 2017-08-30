@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.cloudnote.dao.PersonDao">
+	 
+	 <!-- useGeneratedKeys 用于支持自增类型ID类的
+	 属性, keyProperty用于设置Person中的自增的Bean属性
+	 MyBatis会自动的将自动生成的ID赋值到Person的id属性 -->
+	 <insert id="addPerson"
+	 	parameterType="cn.tedu.cloudnote.entity.Person"
+	 	useGeneratedKeys="true"
+	 	keyProperty="id">
+	 	insert into p_person
+	 		(id, name)
+	 	values
+	 		(null, #{name})
+	 </insert>
+	 
+	 
+	 <!-- 利用 resultMap 进行自定义映射 -->
+	 <resultMap type="cn.tedu.cloudnote.entity.Post" 
+	 	id="postMap">
+	 	<!-- 映射 Post 的主键id -->
+	 	<id column="id" property="id"/>
+	 	<!-- 映射 普通列Post 的 title -->
+	 	<result column="title" property="title"/>
+	 	<!-- association 关联: 可以映射外键引用, 多对一关系 
+	 	多个帖子, 一个发帖人-->
+	 	<association property="person" 
+	 		javaType="cn.tedu.cloudnote.entity.Person">
+	 		<!-- Person 的主键 id -->
+	 		<id column="person_id" property="id"/>
+	 		<!-- 映射普通列Person 的 name -->
+	 		<result column="name" property="name"/> 
+	 	</association>
+	 	
+	 	<!-- collection 映射List集合 利用 另外一个查询
+	 	findComments 查询出结果 
+	 	column="id" 是传递给查询的参数-->
+	 	<collection property="comments" 
+	 		select="findComments" column="id"></collection>
+	 </resultMap>
+	 
+	 <select id="findComments" 
+	 	parameterType="int"
+	 	resultType="cn.tedu.cloudnote.entity.Comment">
+		select 
+			id,
+			title
+		from 
+			p_comment
+		where 
+			post_id = #{id}
+	 </select>
+	 
+	 <!-- 复杂映射必须指定 resultMap:postMap  -->
+	 <select id="findPostById"
+	 	parameterType="int"
+	 	resultMap="postMap">
+	 	select 
+	 		po.id,
+	 		po.title,
+	 		pe.id as person_id,
+	 		pe.name
+	 	from 
+	 		p_post po
+	 	left join p_person pe 
+	 		on po.person_id = pe.id
+	 	where 
+	 		po.id = #{id}
+	 </select>
+	 
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

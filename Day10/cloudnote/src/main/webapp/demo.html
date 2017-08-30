@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- demo.html -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DEMO</title>
+</head>
+<body>
+	<h1>显示图片</h1>
+	<img alt="" src="demopng">
+	<img alt="" src="demo/png.do">
+	
+	<h1>下载Excel</h1>
+	<a href="demo/excel.do">Excel</a>
+	
+	<h1>上载文件</h1>
+	
+	<FORM ENCTYPE="multipart/form-data" 
+		ACTION="demo/upload.do" 
+		METHOD="POST">
+		File to process: 
+		<INPUT id="file1" NAME="userfile1" TYPE="file">
+		<INPUT id="file2" NAME="userfile2" TYPE="file">
+		<INPUT TYPE="submit" VALUE="Send File">
+	</FORM>
+	
+	<h1>Ajax上载文件</h1>
+	<p>XHR的2.0版本提供Ajax上载支持, 老浏览器不能使用</p>
+	<input type="button" onclick="upload()" 
+		value="AJAX Upload">
+	<p id="result"></p>
+<script type="text/javascript">
+function upload(){
+	//1. FormData 对象
+	//2. XHR.onload
+	if(window.FormData){
+		console.log("FormData OK");
+	}
+	
+	var xhr = new XMLHttpRequest();
+	if(xhr.upload){
+		console.log("upload OK");
+	}
+	
+	//在内存中动态创建上载表单对象
+	var form = new FormData();
+	//获取 文件输入框中选定的文件对象
+	var file1 = 
+		document.getElementById('file1').files[0];
+	console.log(file1);
+	var file2 = 
+		document.getElementById('file2').files[0];
+	console.log(file2);
+	
+	if(file1.size + file2.size > 1000000){
+		alert("文件太大!");
+		return;
+	}
+	
+	//向表单中添加两个文件
+	form.append('userfile1', file1);
+	form.append('userfile2', file2);
+	
+	//绑定回调函数
+	xhr.onload = function(){
+		if(xhr.status == 200){
+			//获取服务器发回的结果
+			var str = xhr.responseText;
+			//显示结果
+			var p = document.getElementById('result');
+			p.innerHTML=str;
+		}else{
+			alert("上载失败");
+		}
+	};
+	
+	xhr.open('post', 'demo/upload.do');
+	xhr.send(form);//将表单数据发送到服务器 
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
